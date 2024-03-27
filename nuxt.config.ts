@@ -39,6 +39,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     'nuxt-icon',
     '@unocss/nuxt',
+    '@nuxt/ui',
     ['@nuxtjs/i18n', {
       vueI18n: './i18n.config.ts',
       // baseUrl:'',
