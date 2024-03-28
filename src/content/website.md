@@ -1,16 +1,23 @@
 ---
 draft: false
 navigation: true
-head: true
+
+head:
+  meta:
+    - name: 'author'
+      content: 'Rwilds'
+    - name: 'copyright'
+      content: '© 2024 Rwilds'
 
 title: Rwilds' blog
-description: 这个网站是如何创建的
-
 date: 2023-10-19
-lang: zh
-duration: ∞
-type: none
+type: null
 ---
+
+Learn how to use @nuxt/content.Learn how to use @nuxt/content.Learn how to use @nuxt/content.Learn how to use @nuxt/content.
+Learn how to use @nuxt/content.
+
+<!--more-->
 
 # 欢迎来到Rwilds的博客
 

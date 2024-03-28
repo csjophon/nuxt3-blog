@@ -1,32 +1,15 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
 
-const router = useRouter();
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const items = [
+  'https://picsum.photos/600/800?random=1',
+  'https://picsum.photos/600/800?random=2',
+  'https://picsum.photos/600/800?random=3',
+  'https://picsum.photos/600/800?random=4',
+  'https://picsum.photos/600/800?random=5',
+  'https://picsum.photos/600/800?random=6'
+]
 
-const extractChildRoutes = (items: any) => {
-  return items.flatMap((item: any) => {
-    // 如果当前item没有children属性，则直接返回该item
-    if (!item.children) {
-      return { title: item.title, path: item._path };
-    } else {
-      // 如果当前item有children属性，则仅返回children中的项
-      return flattenChildren(item.children);
-    }
-  });
-}
-
-const flattenChildren = (children: any) => {
-  return children.flatMap((childItem: any) => ({
-    title: childItem.title,
-    path: childItem._path
-  }));
-}
-
-const nav_route = extractChildRoutes(navigation.value!);
-
-console.log(nav_route)
 
 </script>
 
@@ -39,31 +22,26 @@ console.log(nav_route)
       <div class="info h-40vh w-full relative">
         <div class="bg w-full h-full">
           <div class="mask h-full w-full"></div>
-          <img class="h-full w-full object-cover" src="/bg.jpg" alt="Bg">
+          <UCarousel class="carousel w-full h-full" :ui="{ item: 'basis-full ', container: 'h-full ' }"
+            v-slot="{ item }" :items="items">
+            <img class="w-full h-full object-cover" :src="item" draggable="false">
+          </UCarousel>
         </div>
 
         <div class="profile">
-          <div class="flex items-center mr-8">
+          <div class="flex items-center mr-16">
             <div class="name color-white mr-2">Rwilds</div>
             <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
           </div>
           <div class="introduce pt-2">
             人生得意须尽欢，莫使金樽空对月。
           </div>
-
         </div>
 
       </div>
 
-      <div class="content flex-grow-1 w-full">
-        <div v-for="item, index in nav_route" :key="index">
-          <div class="card cursor-pointer">
-            <div class="title" @click="router.push(item.path)">
-              {{ item.title }}
-            </div>
-          </div>
-        </div>
-
+      <div class="content flex-grow-1 w-full p-16">
+        <ContentList></ContentList>
       </div>
 
     </div>
@@ -84,7 +62,16 @@ console.log(nav_route)
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 998;
+    pointer-events: none;
+  }
+
+  .carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 997;
   }
 }
 
@@ -108,9 +95,5 @@ console.log(nav_route)
   .name {
     font-size: 1.5rem;
   }
-}
-
-.content {
-  padding-top: 5rem;
 }
 </style>
