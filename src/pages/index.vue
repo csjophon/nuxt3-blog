@@ -11,6 +11,12 @@ const items = [
 ]
 
 
+const colorMode = useColorMode()
+
+colorMode.preference = 'light'
+
+console.log(colorMode.preference)
+
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const items = [
     <div class="sidebar">
 
     </div>
-    <div class="body container mx-auto flex w-60vw flex-col h-100vh overflow-y-auto">
+    <div class="body container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
       <div class="info h-40vh w-full relative">
         <div class="bg w-full h-full">
           <div class="mask h-full w-full"></div>
@@ -30,7 +36,7 @@ const items = [
 
         <div class="profile">
           <div class="flex items-center mr-16">
-            <div class="name color-white mr-2">Rwilds</div>
+            <div class="name color-white mr-2">Jory Joe⭐</div>
             <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
           </div>
           <div class="introduce pt-2">
@@ -41,7 +47,7 @@ const items = [
       </div>
 
       <div class="content flex-grow-1 w-full p-16">
-          <ContentList></ContentList>
+        <ContentList></ContentList>
       </div>
 
     </div>
@@ -62,7 +68,7 @@ const items = [
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 95%, rgba(0, 0, 0, .5) 100%);
     z-index: 998;
     pointer-events: none;
   }

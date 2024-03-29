@@ -10,7 +10,7 @@ head:
       content: '© 2024 Rwilds'
 
 title: test
-date: 2023-10-19
+date: 2023-10-13
 type: ai
 ---
 

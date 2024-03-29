@@ -1,6 +1,6 @@
 * {
     scroll-behavior: smooth;
-    scrollbar-color: var(--c-scrollbar) var(--c-bg);
+    scrollbar-color: var(--jory-scrollbar) var(--jory-bg);
 }
 
 ::-webkit-scrollbar {
@@ -11,13 +11,13 @@
 }
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-corner {
-    background: var(--c-bg);
+    background: var(--jory-bg);
     border-radius: 0.25rem;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--c-scrollbar);
+    background: var(--jory-scrollbar);
     border-radius: 0.25rem;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--c-scrollbar-hover);
+    background: var(--jory-scrollbar-hover);
 }

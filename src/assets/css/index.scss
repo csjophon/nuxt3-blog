@@ -1,11 +1,20 @@
 // reset
 @import "./reset.scss";
+
+//theme
+@import "./theme/light.scss";
+@import "./theme/dark.scss";
+
+
 // scrollbar
 @import "./scrollbar.scss";
 // viewTransition
 @import "./viewTransition.scss";
 // noprogress
-@import "./noprogress.scss";
+@import "./nprogress.scss";
 
+// blog
 @import "./prose.scss";
 @import "./markdown.scss";
+
+
