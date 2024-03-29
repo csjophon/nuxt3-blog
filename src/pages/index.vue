@@ -41,7 +41,7 @@ const items = [
       </div>
 
       <div class="content flex-grow-1 w-full p-16">
-        <ContentList></ContentList>
+          <ContentList></ContentList>
       </div>
 
     </div>

@@ -5,9 +5,17 @@ const router = useRouter();
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
+// 将异步获取的内容信息包装成 Promise 对象
+const contentInfoPromiseMap = new Map<string, any>();
+
 const getContentInfo = async (path: string) => {
-  const { data: info } = await useAsyncData('info', () => queryContent(path).findOne());
-  return info.value!;
+  if (!contentInfoPromiseMap.has(path)) {
+    const { data: info } = await useAsyncData('info' + path, () => queryContent(path).findOne());
+    // 使用 onMounted 或 onServerPrefetch 生命周期钩子等待数据加载完成
+    contentInfoPromiseMap.set(path, info.value);
+  }
+  // 获取并返回已经加载过的数据
+  return contentInfoPromiseMap.get(path);
 }
 
 const extractChildRoutes = async (items: any) => {
@@ -15,8 +23,10 @@ const extractChildRoutes = async (items: any) => {
 
   for (let item of items) {
     if (!item.children) {
+      console.log(item)
       const info = await getContentInfo(item._path);
       const excerpt = info.excerpt?.children[0].children ? info.excerpt?.children[0].children[0].value : ''
+      console.log(excerpt)
       posts.push({
         title: info.title,
         path: info._path,
@@ -34,8 +44,6 @@ const extractChildRoutes = async (items: any) => {
 }
 
 const posts = await extractChildRoutes(navigation.value!);
-
-console.log(posts)
 
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isFuture = (a?: Date | string | number) => a && new Date(a) > new Date()
@@ -61,7 +69,7 @@ const getGroupName = (p: any) => {
       '--enter-step': '60ms',
     }">
         <span class="year" text-8em color-transparent absolute left--3rem top--2rem font-bold text-stroke-2 op10>
-          {{ getGroupName(item) }}
+          {{ getGroupName(item) }}123
         </span>
       </div>
 
@@ -74,7 +82,7 @@ const getGroupName = (p: any) => {
 
         <div class="content-list-boby cursor-pointer" @click="router.push(item.path)">
           <div class="title mb-2">
-            {{ item.title }}
+            {{ item.title }}123213
           </div>
           <div class="excerpt">
             {{ item.excerpt }}
