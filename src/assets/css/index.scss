@@ -5,6 +5,8 @@
 @import "./theme/light.scss";
 @import "./theme/dark.scss";
 
+// transition
+@import "./transition.scss";
 
 // scrollbar
 @import "./scrollbar.scss";
@@ -16,5 +18,3 @@
 // blog
 @import "./prose.scss";
 @import "./markdown.scss";
-
-
