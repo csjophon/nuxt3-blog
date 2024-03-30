@@ -74,8 +74,9 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
+
 .body {
-  background-color: rgb(254, 247, 238);
+  background-color: var(--jory-body-bg);
   max-width: 960px;
   border-left: .25rem solid rgba(0, 0, 0, 0.1);
   border-right: .25rem solid rgba(0, 0, 0, 0.1);
@@ -122,6 +123,10 @@ onMounted(async () => {
 
   .name {
     font-size: 1.5rem;
+  }
+
+  .introduce {
+    color: var(--jory-color);
   }
 
 }

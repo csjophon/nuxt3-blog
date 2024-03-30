@@ -103,7 +103,7 @@ main {
   }
 
   .button {
-    background-color: #1c1c1c;
+    background-color: var(--jory-button-bg);
     width: 3rem;
     height: 3rem;
     border-radius: .5rem;
@@ -112,12 +112,12 @@ main {
   }
 
   .button:hover {
-    background-color: rgb(73, 73, 73);
+    background-color: var(--jory-button-hover-bg);
   }
 
   .icon {
     font-size: 1.75rem;
-    color: white;
+    color: var(--jory-bg);
   }
 
 }

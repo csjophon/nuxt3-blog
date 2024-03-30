@@ -112,7 +112,7 @@ const isSameDate = (a?: Date | string | number, b?: Date | string | number) => a
   }
 
   .card:hover {
-    background-color: #EEEEEE;
+    background-color: var(--jory-card-hover-bg);
 
   }
 
@@ -120,7 +120,7 @@ const isSameDate = (a?: Date | string | number, b?: Date | string | number) => a
     width: 1rem;
     height: .5rem;
     border-radius: .5rem;
-    background-color: rgb(64, 64, 64);
+    background-color: var(--jory-color);
     transition: all .3s;
   }
 
@@ -130,17 +130,23 @@ const isSameDate = (a?: Date | string | number, b?: Date | string | number) => a
   }
 
   .title {
-    color: #353535;
+    color: var(--jory-color);
     display: block;
     font-size: 2rem;
     font-weight: 700;
     line-height: 3rem;
+
+  }
+
+  .excerpt {
+    color: var(--jory-color);
   }
 
   .date {
     line-height: 3rem;
     min-width: 5rem;
     font-size: 1.25rem;
+    color: var(--jory-color);
   }
 
 

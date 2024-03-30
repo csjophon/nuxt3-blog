@@ -18,3 +18,7 @@
 // blog
 @import "./prose.scss";
 @import "./markdown.scss";
+
+html {
+  background: var(--jory-bg);
+}
