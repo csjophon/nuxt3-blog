@@ -2,13 +2,37 @@
 
 
 const items = [
-  'https://picsum.photos/600/800?random=1',
-  'https://picsum.photos/600/800?random=2',
-  'https://picsum.photos/600/800?random=3',
-  'https://picsum.photos/600/800?random=4',
-  'https://picsum.photos/600/800?random=5',
-  'https://picsum.photos/600/800?random=6'
+  '/bg/1.jpg',
+  '/bg/2.jpg',
+  '/bg/3.jpg',
+  '/bg/4.jpg',
+  '/bg/5.jpg',
+  '/bg/6.jpg',
+  '/bg/7.jpg',
+  '/bg/8.jpg',
+  '/bg/9.jpg',
+  '/bg/10.jpg',
+  '/bg/11.jpg',
+  '/bg/12.jpg',
+  '/bg/13.jpg',
+  '/bg/14.jpg',
+  '/bg/15.jpg',
+  '/bg/16.jpg',
+  '/bg/17.jpg',
+
 ]
+
+const carouselRef = ref()
+
+setInterval(() => {
+  if (!carouselRef.value) return
+
+  if (carouselRef.value.page === carouselRef.value.pages) {
+    return carouselRef.value.select(0)
+  }
+
+  carouselRef.value.next()
+}, 3000)
 
 onMounted(async () => {
   await nextTick();
@@ -36,8 +60,8 @@ onMounted(async () => {
       <div class="info h-40vh w-full relative">
         <div class="bg w-full h-full">
           <div class="mask h-full w-full"></div>
-          <UCarousel class="carousel w-full h-full" :ui="{ item: 'basis-full ', container: 'h-full ' }"
-            v-slot="{ item }" :items="items">
+          <UCarousel ref="carouselRef" class="carousel w-full h-full"
+            :ui="{ item: 'basis-full ', container: 'h-full ' }" v-slot="{ item }" :items="items">
             <img class="w-full h-full object-cover" :src="item" draggable="false">
           </UCarousel>
         </div>
@@ -68,7 +92,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
-
 .body {
   background-color: var(--jory-body-bg);
   max-width: 960px;
