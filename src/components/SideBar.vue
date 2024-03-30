@@ -13,7 +13,7 @@ onMounted(() => {
 
   showBack.value = route.path !== baseUrl
 
-  colorMode.preference = 'system';
+  currentThemeIndex.value = themeList.indexOf(colorMode.preference);
 })
 
 // 取消滚动事件
@@ -34,7 +34,7 @@ const toTop = () => {
 }
 
 const back = () => {
-  router.go(-1)
+  router.back()
 }
 
 
@@ -44,14 +44,13 @@ const switchTheme = () => {
   // 计算下一个主题索引（如果到达最后一个，则回到第一个）
   currentThemeIndex.value = (currentThemeIndex.value + 1) % themeList.length;
   // 根据新的索引设置当前主题
-  colorMode.value = themeList[currentThemeIndex.value];
+  colorMode.preference = themeList[currentThemeIndex.value];
 }
 
 </script>
 <template>
   <main>
     <div class="sidebar-container">
-
       <div class="navigation">
         <button class="home button" @click="router.push('/')">
           <UIcon class="icon" name="i-material-symbols-home" dynamic />
@@ -61,8 +60,8 @@ const switchTheme = () => {
           <UIcon class="icon" name="i-material-symbols-archive" dynamic />
         </button>
         <button class="theme button" @click="switchTheme">
-          <UIcon v-if="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
-          <UIcon v-if="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
+          <UIcon v-show="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
+          <UIcon v-show="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
         </button>
       </div>
 

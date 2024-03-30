@@ -9,15 +9,8 @@ const items = [
   'https://picsum.photos/600/800?random=5',
   'https://picsum.photos/600/800?random=6'
 ]
-
-
-const colorMode = useColorMode()
-
-colorMode.preference = 'system'
-
 onMounted(async () => {
   await nextTick();
-
 
   const body = document.querySelector('.body') as HTMLElement;
   const sidebar = document.querySelector('.sidebar') as HTMLElement;
