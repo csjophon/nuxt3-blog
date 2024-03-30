@@ -90,6 +90,7 @@ export default defineNuxtConfig({
   },
 
   content: {
+    documentDriven: true,
     markdown: {
 
     },
@@ -113,7 +114,7 @@ export default defineNuxtConfig({
 
     },
     navigation: {
-      fields: ['author', 'publishedAt']
+      fields: ['desc', 'date', 'subtitle', 'type']
     },
 
   },

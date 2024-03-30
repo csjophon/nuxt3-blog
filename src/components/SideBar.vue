@@ -14,6 +14,7 @@ onMounted(() => {
   showBack.value = route.path !== baseUrl
 
   currentThemeIndex.value = themeList.indexOf(colorMode.preference);
+
 })
 
 // 取消滚动事件

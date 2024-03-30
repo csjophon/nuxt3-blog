@@ -5,33 +5,14 @@ const router = useRouter();
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
-// 将异步获取的内容信息包装成 Promise 对象
-const contentInfoPromiseMap = new Map<string, any>();
-
-const getContentInfo = async (path: string) => {
-  if (!contentInfoPromiseMap.has(path)) {
-    const { data: info } = await useAsyncData('info' + path, () => queryContent(path).findOne());
-    // 使用 onMounted 或 onServerPrefetch 生命周期钩子等待数据加载完成
-    contentInfoPromiseMap.set(path, info.value);
-  }
-  // 获取并返回已经加载过的数据
-  return contentInfoPromiseMap.get(path);
-}
+console.log(navigation)
 
 const extractChildRoutes = async (items: any) => {
   let posts: any = [];
 
   for (let item of items) {
     if (!item.children) {
-      const info = await getContentInfo(item._path);
-      const excerpt = info.excerpt?.children[0].children ? info.excerpt?.children[0].children[0].value : ''
-      posts.push({
-        title: info.title,
-        path: info._path,
-        excerpt: excerpt,
-        date: info.date,
-        type: info.type
-      });
+      posts.push(item);
     } else {
       const childRoutes = await extractChildRoutes(item.children);
       posts = [...posts, ...childRoutes];
@@ -84,13 +65,13 @@ const isSameDate = (a?: Date | string | number, b?: Date | string | number) => a
         </div>
         <div v-else class="date placeholder"></div>
 
-        <div class="card w-full cursor-pointer px-2 pb-2" @click="router.push(item.path)">
+        <div class="card w-full cursor-pointer px-2 pb-2" @click="router.push(item._path)">
           <div class="title">
             {{ item.title }}
           </div>
           <div class="underline mb-2"></div>
           <div class="excerpt">
-            {{ item.excerpt }}
+            {{ item.desc }}
           </div>
         </div>
 
