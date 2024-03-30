@@ -1,8 +1,11 @@
 .prose {
-  color: var(--fg);
-  // max-width: 65ch;
+  color: var(--jory-color);
+  max-width: 100%;
+  padding: 4rem 0;
   font-size: 1rem;
   line-height: 1.75;
+  word-wrap: break-word; /* 非标准属性，但在一些场景下有助于防止长单词溢出容器 */
+  overflow-wrap: break-word; /* 标准属性，用于在需要的地方断行，特别是在有很长的不可分割单词或 Unicode 字符序列时 */
 }
 .prose [class~="lead"] {
   color: #4b5563;
@@ -74,8 +77,6 @@
 }
 .prose hr {
   border-color: rgba(125, 125, 125, 0.3);
-  margin-top: 3em;
-  margin-bottom: 3em;
 }
 .prose blockquote {
   font-weight: 500;
@@ -95,27 +96,25 @@
   content: close-quote;
 }
 .prose h1 {
-  color: var(--fg-deeper);
+  color: var(--jory-md-color-deeper);
   font-weight: 800;
   font-size: 2.25em;
   margin-top: 0;
-  margin-bottom: 0.8888889em;
+  margin-bottom: 0em;
   line-height: 1.1111111;
 }
 .prose h2 {
-  color: var(--fg-deep);
+  color: var(--jory-md-color-deep);
   font-weight: 700;
   font-size: 1.5em;
-  margin-top: 2em;
-  margin-bottom: 1em;
+  margin: 1rem 0;
   line-height: 1.3333333;
 }
 .prose h3 {
   color: inherit;
   font-weight: 600;
   font-size: 1.25em;
-  margin-top: 1.6em;
-  margin-bottom: 0.6em;
+  margin: 0.5rem 0;
   line-height: 1.6;
   opacity: 0.7;
 }
@@ -216,8 +215,7 @@
   padding-left: 0.5714286em;
 }
 .prose p {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+  margin: 0.5rem 0;
 }
 .prose img {
   margin-top: 2em;

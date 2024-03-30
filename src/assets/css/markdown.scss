@@ -23,26 +23,13 @@
 }
 
 .shiki {
-  background-color: #f8f8f8 !important;
+  background-color: var(--jory-bg) !important;
 }
 
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--s-dark) !important;
   background-color: #0e0e0e !important;
-}
-
-.prose {
-  --fg: #555;
-  --fg-deep: #222;
-  --fg-deeper: #000;
-
-  --code-inline: rgb(248, 250, 252);
-
-  color: var(--fg);
-}
-
-.dark-mode .prose {
 }
 
 .prose a {
@@ -61,7 +48,7 @@ html.dark .shiki span {
 }
 
 .prose hr {
-  width: 50px;
+  width: 100%;
   margin: 2em auto;
 }
 
@@ -118,7 +105,6 @@ h6:focus .header-anchor {
   font-style: normal;
   line-height: 1.6em;
   padding: 0.5em 1em;
-  margin-left: -1.1em;
 }
 
 .prose blockquote > * {

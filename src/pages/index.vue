@@ -9,6 +9,7 @@ const items = [
   'https://picsum.photos/600/800?random=5',
   'https://picsum.photos/600/800?random=6'
 ]
+
 onMounted(async () => {
   await nextTick();
 
@@ -71,6 +72,7 @@ onMounted(async () => {
 .body {
   background-color: var(--jory-body-bg);
   max-width: 960px;
+  min-width: 375px;
   border-left: .25rem solid rgba(0, 0, 0, 0.1);
   border-right: .25rem solid rgba(0, 0, 0, 0.1);
   box-sizing: content-box;

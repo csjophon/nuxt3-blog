@@ -24,9 +24,14 @@ onMounted(async () => {
 <template>
   <main>
     <div class="blog relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-      <div class="">
-        <ContentDoc class="prose" />
-      </div>
+      <ContentDoc v-slot="{ doc }">
+        <div class="w-full prose px-8">
+          <h1 class="w-full text-center">{{ doc.title }}</h1>
+          <p class="w-full text-center font-600">{{ doc.desc }}</p>
+          <p class="w-full text-center">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>
+          <ContentRenderer :value="doc" />
+        </div>
+      </ContentDoc>
 
       <div class="sidebar">
         <SideBar></SideBar>
@@ -37,8 +42,9 @@ onMounted(async () => {
 
 <style lang="scss">
 .blog {
-  background-color: rgb(254, 247, 238);
+  background-color: var(--jory-body-bg);
   max-width: 960px;
+  min-width: 375px;
   border-left: .25rem solid rgba(0, 0, 0, 0.1);
   border-right: .25rem solid rgba(0, 0, 0, 0.1);
   box-sizing: content-box;
