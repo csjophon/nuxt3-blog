@@ -57,7 +57,7 @@ const switchTheme = () => {
           <UIcon class="icon" name="i-material-symbols-home" dynamic />
         </button>
 
-        <button class="archive button">
+        <button class="archive button" @click="router.push('/archive')">
           <UIcon class="icon" name="i-material-symbols-archive" dynamic />
         </button>
         <button class="theme button" @click="switchTheme">

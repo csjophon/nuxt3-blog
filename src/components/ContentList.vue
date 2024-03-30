@@ -5,8 +5,6 @@ const router = useRouter();
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
-console.log(navigation)
-
 const extractChildRoutes = async (items: any) => {
   let posts: any = [];
 
@@ -36,8 +34,6 @@ const isSameGroup = (a: any, b?: any) => {
 }
 
 const getYearGroupName = (p: any) => {
-  if (isFuture(p.date))
-    return 'Upcoming'
   return getYear(p.date)
 }
 

@@ -24,18 +24,21 @@ const items = [
 
 const carouselRef = ref()
 
-setInterval(() => {
-  if (!carouselRef.value) return
+const carouselTimer = ref()
 
-  if (carouselRef.value.page === carouselRef.value.pages) {
-    return carouselRef.value.select(0)
-  }
-
-  carouselRef.value.next()
-}, 3000)
 
 onMounted(async () => {
   await nextTick();
+
+  carouselTimer.value = setInterval(() => {
+    if (!carouselRef.value) return
+
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0)
+    }
+
+    carouselRef.value.next()
+  }, 3000)
 
   const body = document.querySelector('.body') as HTMLElement;
   const sidebar = document.querySelector('.sidebar') as HTMLElement;
@@ -51,6 +54,10 @@ onMounted(async () => {
   updateSidebarPosition();
 
 })
+
+onUnmounted(() => {
+  clearInterval(carouselTimer.value);
+});
 
 </script>
 
@@ -96,8 +103,7 @@ onMounted(async () => {
   background-color: var(--jory-body-bg);
   max-width: 960px;
   min-width: 375px;
-  border-left: .25rem solid rgba(0, 0, 0, 0.1);
-  border-right: .25rem solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--jory-body-shadow);
   box-sizing: content-box;
 }
 
