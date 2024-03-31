@@ -1,6 +1,8 @@
 <script setup lang="ts">
 
-const { toc } = useContent()
+const content = useContent()
+
+console.log(content)
 
 onMounted(async () => {
   await nextTick();
@@ -8,9 +10,12 @@ onMounted(async () => {
 
   const blog = document.querySelector('.blog') as HTMLElement;
   const sidebar = document.querySelector('.sidebar') as HTMLElement;
+  const toc = document.querySelector('.toc') as HTMLElement;
 
   const updateSidebarPosition = () => {
+    console.log(blog.getBoundingClientRect())
     sidebar.style.left = `${blog.getBoundingClientRect().right}px`;
+    toc.style.right = `${blog.getBoundingClientRect().right}px`;
   }
 
   window.addEventListener('scroll', updateSidebarPosition);
@@ -26,13 +31,7 @@ onMounted(async () => {
 <template>
   <main>
 
-    <ul class="toc" v-if="toc && toc.links">
-      <li v-for="link in toc.links" :key="link.text">
-        <a :href="`#${link.id}`">
-          {{ link.text }}
-        </a>
-      </li>
-    </ul>
+
 
     <div class="blog relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
       <ContentDoc v-slot="{ doc }">
@@ -48,6 +47,18 @@ onMounted(async () => {
       <div class="sidebar">
         <SideBar></SideBar>
       </div>
+
+      <div class="toc">
+        <UIcon class="toc-icon" name="i-material-symbols-toc" dynamic />
+        <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
+          <li v-for="link in content.toc.value.links" :key="link.text">
+            <a :href="`#${link.id}`">
+              {{ link.text }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </main>
 </template>
@@ -65,16 +76,41 @@ onMounted(async () => {
 .toc {
   position: fixed;
   z-index: 1000;
-  margin-left: 1rem;
-
+  margin-right: 1rem;
   height: 100vh;
   padding: 2rem 0;
+  min-width: 8rem;
+  max-width: 8rem;
+  color: var(--jory-color);
+
+
+  &-icon {
+    font-size: 2rem;
+    position: absolute;
+    left: -1rem;
+    transition: all .3s;
+    opacity: .6;
+  }
+
+  &-main {
+    margin-top: 2.5rem;
+    transition: all .3s;
+    opacity: .3;
+  }
+}
+
+.toc:hover .toc-icon {
+  opacity: 1;
+}
+
+.toc:hover .toc-main {
+  opacity: 1;
 }
 
 .sidebar {
   position: fixed;
   z-index: 1000;
-  margin-left: 1rem;
+  margin-right: 1rem;
   height: 100vh;
   padding: 2rem 0;
 }
