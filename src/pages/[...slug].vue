@@ -31,8 +31,6 @@ onMounted(async () => {
 <template>
   <main>
 
-
-
     <div class="blog relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
       <ContentDoc v-slot="{ doc }">
         <div class="w-full prose px-8">
@@ -49,7 +47,7 @@ onMounted(async () => {
       </div>
 
       <div class="toc">
-        <UIcon class="toc-icon" name="i-material-symbols-toc" dynamic />
+        <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
         <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
           <li v-for="link in content.toc.value.links" :key="link.text">
             <a :href="`#${link.id}`">
