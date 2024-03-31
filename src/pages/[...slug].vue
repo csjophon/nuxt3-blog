@@ -13,7 +13,6 @@ onMounted(async () => {
   const toc = document.querySelector('.toc') as HTMLElement;
 
   const updateSidebarPosition = () => {
-    console.log(blog.getBoundingClientRect())
     sidebar.style.left = `${blog.getBoundingClientRect().right}px`;
     toc.style.right = `${blog.getBoundingClientRect().right}px`;
   }
@@ -80,6 +79,12 @@ onMounted(async () => {
   max-width: 8rem;
   color: var(--jory-color);
 
+  li {
+    margin: .5rem 0;
+    transition: all .3s;
+    opacity: .5;
+  }
+
 
   &-icon {
     font-size: 2rem;
@@ -91,8 +96,6 @@ onMounted(async () => {
 
   &-main {
     margin-top: 2.5rem;
-    transition: all .3s;
-    opacity: .3;
   }
 }
 
@@ -100,8 +103,12 @@ onMounted(async () => {
   opacity: 1;
 }
 
-.toc:hover .toc-main {
+.toc-main>li:hover {
   opacity: 1;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-underline-offset: .3rem;
+  transition: border 0.3s ease-in-out;
 }
 
 .sidebar {

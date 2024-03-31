@@ -10,8 +10,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   devServer: {
-    port: 11111,
-    url: "http://localhost:11111",
+    port: 10001,
+    url: "http://localhost:10001",
   },
 
   app: {
