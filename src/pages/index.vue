@@ -95,6 +95,11 @@ onUnmounted(() => {
 
     </div>
 
+    <div class="copyright">
+      <span select-none>© Jory 2024</span>
+      <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
+    </div>
+
   </main>
 </template>
 
@@ -105,6 +110,19 @@ onUnmounted(() => {
   min-width: 375px;
   box-shadow: var(--jory-body-shadow);
   box-sizing: content-box;
+}
+
+.copyright {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  bottom: 0;
+  color: var(--jory-color);
+  font-size: 13px;
+  text-align: center;
+  span {
+    margin-right: .5rem;
+  }
 }
 
 .bg {

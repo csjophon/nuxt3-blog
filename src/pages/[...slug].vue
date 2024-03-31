@@ -36,7 +36,7 @@ onMounted(async () => {
         <div class="w-full prose px-8">
           <h1 class="w-full text-center">{{ doc.title }}</h1>
           <p class="w-full text-center font-600">{{ doc.subtitle }}</p>
-          <p class="w-full text-center">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>
+          <p class="w-full text-center opacity-50">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>
           <p class="w-full">{{ doc.desc }}</p>
           <ContentRenderer :value="doc" />
         </div>
@@ -66,8 +66,7 @@ onMounted(async () => {
   background-color: var(--jory-body-bg);
   max-width: 960px;
   min-width: 375px;
-  border-left: .25rem solid rgba(0, 0, 0, 0.1);
-  border-right: .25rem solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--jory-body-shadow);
   box-sizing: content-box;
 }
 

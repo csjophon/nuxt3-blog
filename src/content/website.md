@@ -18,11 +18,20 @@ type: null
 
 ## 技术栈
 
-1. Nuxt3
-2. Typescript
-3. NuxtContent
-4. NuxtUI
-5. Iconify
-6. Pinia
-7. Unocss
+1. Nuxt3: [Nuxt3文档](https://nuxt.com/docs/getting-started/introduction)
+2. NuxtContent: [NuxtContent文档](https://content.nuxt.com/get-started/installation)
+3. NuxtUI: [NuxtUI文档](https://ui.nuxt.com/getting-started/installation)
+4. Typescript
+5. Pinia: [Pinia文档](https://pinia.vuejs.org/introduction.html)
+6. Unocss: [Unocss文档](https://unocss.dev/guide/)
 
+## 项目启动
+
+```bash
+yarn install
+
+yarn dev
+
+yarn build
+
+```
