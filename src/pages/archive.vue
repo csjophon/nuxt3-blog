@@ -26,14 +26,11 @@ const extractChildRoutes = async (items: any) => {
 
 const posts = await extractChildRoutes(navigation.value!);
 
-console.log(posts)
-
 const getDate = (a: Date | string | number) => new Date(a).getDate()
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isFuture = (a?: Date | string | number) => a && new Date(a) > new Date()
 const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
 const isSameGroup = (a: any, b?: any) => {
-  console.log((isFuture(a.date) === isFuture(b?.date)), isSameYear(a.date, b?.date), (isFuture(a.date) === isFuture(b?.date)) && isSameYear(a.date, b?.date))
   return isSameYear(a.date, b?.date)
 }
 

@@ -126,6 +126,14 @@ onUnmounted(() => {
   }
 }
 
+.sidebar {
+  position: fixed;
+  z-index: 1000;
+  margin-left: 1rem;
+  height: 100vh;
+  padding: 2rem 0;
+}
+
 .bg {
   position: absolute;
   z-index: 998;
@@ -174,11 +182,5 @@ onUnmounted(() => {
 
 }
 
-.sidebar {
-  position: fixed;
-  z-index: 1000;
-  margin-left: 1rem;
-  height: 100vh;
-  padding: 2rem 0;
-}
+
 </style>

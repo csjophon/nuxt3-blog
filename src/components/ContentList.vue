@@ -38,7 +38,6 @@ const getYearGroupName = (p: any) => {
 }
 
 const isSameDate = (a: any, b?: any) => {
-  console.log(a.date, b?.date)
   return a && b && getDate(a.date) === getDate(b.date)
 }
 

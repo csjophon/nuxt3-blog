@@ -53,16 +53,21 @@ const switchTheme = () => {
   <main>
     <div class="sidebar-container">
       <div class="navigation">
-        <button class="home button" @click="router.push('/')">
-          <UIcon class="icon" name="i-material-symbols-home" dynamic />
-        </button>
-
-        <button class="archive button" @click="router.push('/archive')">
-          <UIcon class="icon" name="i-material-symbols-archive" dynamic />
-        </button>
         <button class="theme button" @click="switchTheme">
           <UIcon v-show="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
           <UIcon v-show="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
+        </button>
+        <button class="home button" @click="router.push('/')">
+          <UIcon class="icon" name="i-material-symbols-home" dynamic />
+        </button>
+        <button class="archive-icon button" @click="router.push('/archive')">
+          <UIcon class="icon" name="i-material-symbols-archive" dynamic />
+        </button>
+        <button class="favorites-icon button" @click="router.push('/favorites')">
+          <UIcon class="icon" name="i-solar-star-bold" dynamic />
+        </button>
+        <button class="more-icon button" @click="router.push('/more')">
+          <UIcon class="icon" name="i-tabler-apps-filled" dynamic />
         </button>
       </div>
 
