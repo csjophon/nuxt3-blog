@@ -30,14 +30,18 @@ const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isFuture = (a?: Date | string | number) => a && new Date(a) > new Date()
 const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
 const isSameGroup = (a: any, b?: any) => {
-  return (isFuture(a.date) === isFuture(b?.date)) && isSameYear(a.date, b?.date)
+  return isSameYear(a.date, b?.date)
 }
 
 const getYearGroupName = (p: any) => {
   return getYear(p.date)
 }
 
-const isSameDate = (a?: Date | string | number, b?: Date | string | number) => a && b && getDate(a) === getDate(b)
+const isSameDate = (a: any, b?: any) => {
+  console.log(a.date, b?.date)
+  return a && b && getDate(a.date) === getDate(b.date)
+}
+
 
 
 </script>
@@ -55,8 +59,8 @@ const isSameDate = (a?: Date | string | number, b?: Date | string | number) => a
       </div>
 
       <div class="w-full slide-enter flex mb-8">
-
-        <div class="date" ws-nowrap v-if="item.date && !isSameDate(item, posts[index - 1])">
+        <div class="date" ws-nowrap
+          v-if="!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1])">
           {{ formatDate(item.date, 'diy', 'MMM D') }}
         </div>
         <div v-else class="date placeholder"></div>

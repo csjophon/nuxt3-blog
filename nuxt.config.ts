@@ -90,7 +90,9 @@ export default defineNuxtConfig({
   },
 
   content: {
-    documentDriven: true,
+    documentDriven: {
+      layoutFallbacks: ['default'],
+    },
     markdown: {
 
     },

@@ -7,6 +7,7 @@
       <main>
         <slot></slot>
       </main>
+      <div class="black w-full h-full"></div>
     </section>
   </div>
 </template>
