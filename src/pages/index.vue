@@ -96,6 +96,10 @@ onUnmounted(() => {
   clearInterval(carouselTimer.value);
 });
 
+const openInNewTab = (link: string) => {
+  window.open(link, '_blank');
+}
+
 </script>
 
 <template>
@@ -116,8 +120,8 @@ onUnmounted(() => {
             <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
           </div>
           <div class="sub w-full flex justify-between items-center">
-            <div class="links">
-              <button v-for="i, idx in  links " :key="idx" :class="[idx, 'button']" @click="router.push(i.link)">
+            <div class="links ml-4">
+              <button v-for="i, idx in  links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
                 <UIcon class="icon" :name="i.icon" dynamic />
               </button>
             </div>
