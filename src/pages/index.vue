@@ -1,5 +1,43 @@
 <script setup lang="ts">
 
+const router = useRouter();
+
+const links = {
+  tiktok: {
+    icon: 'i-ic-outline-tiktok',
+    link: ''
+  },
+  youtube: {
+    icon: 'i-mingcute-youtube-fill',
+    link: 'https://www.youtube.com/channel/UCXE1CZ9CVMvLG3ohizQq-IA'
+  },
+  twitter: {
+    icon: 'i-ri-twitter-x-line',
+    link: 'https://twitter.com/JoryJoestar',
+  },
+  ins: {
+    icon: 'i-basil-instagram-solid',
+    link: '',
+  },
+  bili: {
+    icon: 'i-ri-bilibili-fill',
+    link: 'https://space.bilibili.com/100638063?spm_id_from=333.1007.0.0',
+  },
+
+  xiaohongshu: {
+    icon: 'i-simple-icons-xiaohongshu',
+    link: 'https://www.xiaohongshu.com/user/profile/5b1b85b86b58b718f9de594d?m_source=pinpai',
+  },
+  zhihu: {
+    icon: 'i-ri-zhihu-fill',
+    link: 'https://www.zhihu.com/people/huang-xiao-yao-6-54',
+  },
+  douyin: {
+    icon: 'i-ic-outline-tiktok',
+    link: 'https://www.douyin.com/user/MS4wLjABAAAAKdCvJ_1FJwDskpBszVzIcfoQtkgbB47i88c8IbxHQyx43sfjgjaVI8UVGdaneitx'
+  },
+}
+
 const items = [
   '/bg/1.jpg',
   '/bg/2.jpg',
@@ -72,13 +110,20 @@ onUnmounted(() => {
           </UCarousel>
         </div>
 
-        <div class="profile">
+        <div class="profile w-full">
           <div class="flex items-center mr-16">
-            <div class="name color-white mr-2">Jory Joe⭐</div>
+            <div class="name color-white mr-2">Jory Joestar⭐</div>
             <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
           </div>
-          <div class="introduce pt-2">
-            人生得意须尽欢，莫使金樽空对月。
+          <div class="sub w-full flex justify-between items-center">
+            <div class="links">
+              <button v-for="i, idx in  links " :key="idx" :class="[idx, 'button']" @click="router.push(i.link)">
+                <UIcon class="icon" :name="i.icon" dynamic />
+              </button>
+            </div>
+            <div class="introduce font-bold font-size-6">
+              人生得意须尽欢，莫使金樽空对月。
+            </div>
           </div>
         </div>
 
@@ -161,7 +206,7 @@ onUnmounted(() => {
   position: absolute;
   z-index: 999;
   right: 0rem;
-  bottom: -3rem;
+  bottom: -4rem;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -176,11 +221,32 @@ onUnmounted(() => {
     font-size: 1.5rem;
   }
 
-  .introduce {
-    color: var(--jory-color);
+  .sub {
+
+    .button {
+      margin: .5rem;
+      background-color: var(--jory-button-bg);
+      width: 2rem;
+      height: 2rem;
+      border-radius: .5rem;
+      transition: all .3s;
+    }
+
+    .button:hover {
+      background-color: var(--jory-button-hover-bg);
+    }
+
+    .icon {
+      font-size: 1.75rem;
+      color: var(--jory-bg);
+    }
+
+    .introduce {
+      color: var(--jory-color);
+    }
   }
 
+
+
 }
-
-
 </style>

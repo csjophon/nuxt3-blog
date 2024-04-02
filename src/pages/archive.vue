@@ -86,7 +86,7 @@ onMounted(() => {
               </div>
               <div v-else class="date placeholder"></div>
 
-              <div class="card w-full cursor-pointer px-2 pb-2" @click="router.push(item._path)">
+              <div class="card cursor-pointer px-2" @click="router.push(item._path)">
                 <div class="title">
                   {{ item.title }}
                 </div>

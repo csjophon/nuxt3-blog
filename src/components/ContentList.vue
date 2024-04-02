@@ -18,7 +18,29 @@ const extractChildRoutes = async (items: any) => {
   }
 
   // 按照 date 字段倒序排列 posts 数组
-  posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  posts.sort((a: any, b: any) => {
+    // 先判断是否都有 top 属性且都为 true，此时直接比较日期
+    if (a.top && b.top) {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    }
+
+    // 接下来处理至少有一个 post 的 top 为 false 或 undefined 的情况
+
+    // 如果只有 a.top 为 true，b.top 不为 true，则 a 应排在 b 前面
+    if (a.top && !b.top) {
+      return -1;
+    }
+
+    // 如果只有 b.top 为 true，a.top 不为 true，则 b 应排在 a 前面
+    if (!a.top && b.top) {
+      return 1;
+    }
+
+    // 如果 a 和 b 都没有 top 属性或都为 false，则按照日期倒序排序
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
   return posts;
 }
@@ -47,8 +69,8 @@ const isSameDate = (a: any, b?: any) => {
 <template>
   <div class="content-list">
     <div class="w-full" v-for="item, index in posts" :key="index">
-
-      <div v-if="!isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none slide-enter :style="{
+      <div v-if="!item.top && !isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none
+        slide-enter :style="{
       '--enter-stage': index - 2,
       '--enter-step': '60ms',
     }">
@@ -57,9 +79,15 @@ const isSameDate = (a: any, b?: any) => {
         </span>
       </div>
 
+      <div select-none relative h20 pointer-events-none v-else-if="item.top">
+        <span class="year" text-4em color-transparent absolute text-stroke-2 op-25>
+          置顶
+        </span>
+      </div>
+
       <div class="w-full slide-enter flex mb-8">
         <div class="date" ws-nowrap
-          v-if="!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1])">
+          v-if="!item.top && (!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1]))">
           {{ formatDate(item.date, 'diy', 'MMM D') }}
         </div>
         <div v-else class="date placeholder"></div>

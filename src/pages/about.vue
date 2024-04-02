@@ -1,14 +1,13 @@
 <script lang="ts" setup>
 
-
 onMounted(async () => {
   await nextTick();
 
-  const favorites = document.querySelector('.favorites') as HTMLElement;
+  const about = document.querySelector('.about') as HTMLElement;
   const sidebar = document.querySelector('.sidebar') as HTMLElement;
 
   const updateSidebarPosition = () => {
-    sidebar.style.left = `${favorites.getBoundingClientRect().right}px`;
+    sidebar.style.left = `${about.getBoundingClientRect().right}px`;
   }
 
   window.addEventListener('scroll', updateSidebarPosition);
@@ -21,20 +20,25 @@ onMounted(async () => {
 
 </script>
 <template>
-  <div class="favorites relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-    <div class="favorites-body w-full flex-grow-1 p-16">
-      <div class="title">
-        收藏夹
+  <div class="about relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
+    <div class="about-boby w-full flex-grow-1 p-16">
+      <div class="title pb-4">
+        About me
       </div>
-      <div class="favorites-body-list">
-
+      <div class="introduce">
+        <p>Hello i'm jory, you can call me <span class="font-bold font-size-2rem">Rwilds</span>, it means rich wilds,I
+          really wanna explore there.
+        </p>
+        <p>Also you can call me <span class="font-bold font-size-2rem">Jory Joestar</span>, it means JoJo which is my
+          favorite roles' nickname.</p>
+        <p>I enjoy creating, whether it's games, music, dance, sport, car, junk food or anything else</p>
+        <p>I hope I can become the person I want to be.</p>
+        <p>It's a long road ahead, see you later.</p>
       </div>
     </div>
-
     <div class="sidebar">
       <SideBar></SideBar>
     </div>
-
     <div class="copyright">
       <span select-none>© Jory 2024</span>
       <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
@@ -42,7 +46,7 @@ onMounted(async () => {
   </div>
 </template>
 <style lang="scss">
-.favorites {
+.about {
   background-color: var(--jory-body-bg);
   max-width: 960px;
   min-width: 375px;
@@ -55,6 +59,16 @@ onMounted(async () => {
     font-weight: 600;
 
   }
+
+  .introduce {
+    color: var(--jory-color);
+    font-size: 1.5rem;
+
+    p {
+      margin: .5rem 0;
+    }
+  }
+
 }
 
 .copyright {

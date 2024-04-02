@@ -5,9 +5,9 @@ navigation: true
 head:
   meta:
     - name: 'author'
-      content: 'Rwilds'
+      content: 'Jory'
     - name: 'copyright'
-      content: '© 2024 Rwilds'
+      content: '© 2024 Jory'
 
 title: 如何做一个这样的网站？
 subtitle: Jory Joestar的奇妙之旅
