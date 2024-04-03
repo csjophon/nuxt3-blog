@@ -9,10 +9,10 @@ head:
     - name: 'copyright'
       content: '© 2024 Jory'
 
-title: 收藏夹
+title: 收藏
 subtitle: 
 desc: 
-date: 2077-01-01
+date: 2077-12-01
 type: null
 top: true
 lang: zh

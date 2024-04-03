@@ -7,45 +7,29 @@ const { data: navigation } = await useAsyncData('navigation', () => fetchContent
 
 const extractChildRoutes = async (items: any) => {
   let posts: any = [];
+  let topPosts: any[] = [];
 
   for (let item of items) {
     if (!item.children) {
-      posts.push(item);
+      if (!item.top) {
+        posts.push(item);
+      } else {
+        topPosts.push(item);
+      }
     } else {
       const childRoutes = await extractChildRoutes(item.children);
-      posts = [...posts, ...childRoutes];
+      posts = [...posts, ...childRoutes.posts];
     }
   }
 
   // 按照 date 字段倒序排列 posts 数组
-  // posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  topPosts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  posts.sort((a: any, b: any) => {
-    // 先判断是否都有 top 属性且都为 true，此时直接比较日期
-    if (a.top && b.top) {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    }
-
-    // 接下来处理至少有一个 post 的 top 为 false 或 undefined 的情况
-
-    // 如果只有 a.top 为 true，b.top 不为 true，则 a 应排在 b 前面
-    if (a.top && !b.top) {
-      return -1;
-    }
-
-    // 如果只有 b.top 为 true，a.top 不为 true，则 b 应排在 a 前面
-    if (!a.top && b.top) {
-      return 1;
-    }
-
-    // 如果 a 和 b 都没有 top 属性或都为 false，则按照日期倒序排序
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
-
-  return posts;
+  return { posts, topPosts };
 }
 
-const posts = await extractChildRoutes(navigation.value!);
+const list = await extractChildRoutes(navigation.value!);
 
 const getDate = (a: Date | string | number) => new Date(a).getDate()
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
@@ -68,47 +52,55 @@ const isSameDate = (a: any, b?: any) => {
 </script>
 <template>
   <div class="content-list">
-    <div class="w-full" v-for="item, index in posts" :key="index">
-      <div v-if="!item.top && !isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none
-        slide-enter :style="{
-      '--enter-stage': index - 2,
-      '--enter-step': '60ms',
-    }">
+
+    <div class="top mb-4">
+      <div class="top-title" select-none relative h20 pointer-events-none text-4em color-transparent text-stroke-2
+        op-25>
+        置顶
+      </div>
+
+      <div class="pt-2 flex ">
+        <div class="card cursor-pointer px-2" v-for="item, index in list.topPosts" :key="index"
+          @click="router.push(item._path)">
+          <span class="title">{{ item.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div v-for="item, index in list.posts" :key="index">
+      <div v-if="!isSameGroup(item, list.posts[index - 1])" select-none relative h20 pointer-events-none slide-enter
+        :style="{
+          '--enter-stage': index - 2,
+          '--enter-step': '60ms',
+        }">
         <span class="year" text-8em color-transparent absolute left--3rem top--2rem font-bold text-stroke-2 op10>
           {{ getYearGroupName(item) }}
         </span>
       </div>
 
-      <div select-none relative h20 pointer-events-none v-else-if="item.top">
-        <span class="year" text-4em color-transparent absolute text-stroke-2 op-25>
-          置顶
-        </span>
-      </div>
-
       <div class="w-full slide-enter flex mb-8">
         <div class="date" ws-nowrap
-          v-if="!item.top && (!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1]))">
+          v-if="(!isSameGroup(item, list.posts[index - 1]) || item.date && !isSameDate(item, list.posts[index - 1]))">
           {{ formatDate(item.date, 'diy', 'MMM D') }}
         </div>
         <div v-else class="date placeholder"></div>
 
-        <div class="card w-full cursor-pointer px-2 pb-2" @click="router.push(item._path)">
+        <div class="card cursor-pointer px-2 pb-2" @click="router.push(item._path)">
           <div class="title">
             {{ item.title }}
           </div>
-          <div class="underline mb-2"></div>
           <div class="excerpt">
             {{ item.desc }}
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
 </template>
 <style lang="scss">
 .content-list {
+
+  .top-title,
   .year {
     color: grey;
   }
@@ -117,6 +109,7 @@ const isSameDate = (a: any, b?: any) => {
   .card {
     border-radius: .5rem;
     transition: all .3s;
+    display: inline-block;
   }
 
   .card:hover {
@@ -124,7 +117,9 @@ const isSameDate = (a: any, b?: any) => {
 
   }
 
-  .underline {
+  .title::after {
+    display: block;
+    content: " ";
     width: 1rem;
     height: .5rem;
     border-radius: .5rem;
@@ -132,18 +127,17 @@ const isSameDate = (a: any, b?: any) => {
     transition: all .3s;
   }
 
-  .card:hover .underline {
-    width: 2.5rem;
+  .card:hover .title::after {
+    width: 100%;
     background-color: rgb(22, 192, 22);
   }
 
   .title {
     color: var(--jory-color);
-    display: block;
+    display: inline-block;
     font-size: 2rem;
     font-weight: 700;
     line-height: 3rem;
-
   }
 
   .excerpt {

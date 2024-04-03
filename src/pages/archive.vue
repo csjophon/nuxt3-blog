@@ -11,7 +11,9 @@ const extractChildRoutes = async (items: any) => {
 
   for (let item of items) {
     if (!item.children) {
-      posts.push(item);
+      if (!item.top) {
+        posts.push(item);
+      }
     } else {
       const childRoutes = await extractChildRoutes(item.children);
       posts = [...posts, ...childRoutes];
@@ -87,10 +89,9 @@ onMounted(() => {
               <div v-else class="date placeholder"></div>
 
               <div class="card cursor-pointer px-2" @click="router.push(item._path)">
-                <div class="title">
+                <div class="card-title">
                   {{ item.title }}
                 </div>
-                <div class="underline mb-2"></div>
               </div>
             </div>
           </div>
@@ -133,22 +134,23 @@ onMounted(() => {
       transition: all .3s;
     }
 
-    .underline {
+    .card-title::after {
+      display: block;
+      content: " ";
       width: 1rem;
-      height: 4px;
+      height: .25rem;
       border-radius: .5rem;
       background-color: var(--jory-color);
       transition: all .3s;
     }
 
-    .card:hover .underline {
-      width: 2.5rem;
+    .card:hover .card-title::after {
+      width: 100%;
       background-color: rgb(22, 192, 22);
     }
 
-    .title {
+    .card-title {
       color: var(--jory-color);
-      display: block;
       font-size: 1rem;
       font-weight: 600;
       line-height: 2rem;

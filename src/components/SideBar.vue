@@ -60,9 +60,6 @@ const switchTheme = () => {
         <button class="home button" @click="router.push('/')">
           <UIcon class="icon" name="i-material-symbols-home" dynamic />
         </button>
-        <button class="more-icon button" @click="router.push('/more')">
-          <UIcon class="icon" name="i-tabler-apps-filled" dynamic />
-        </button>
         <button class="archive-icon button" @click="router.push('/archive')">
           <UIcon class="icon" name="i-material-symbols-archive" dynamic />
         </button>
