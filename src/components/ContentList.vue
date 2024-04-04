@@ -54,15 +54,15 @@ const isSameDate = (a: any, b?: any) => {
   <div class="content-list">
 
     <div class="top mb-4">
-      <div class="top-title" select-none relative h20 pointer-events-none text-4em color-transparent text-stroke-2
-        op-25>
-        置顶
+      <div class="top-title" select-none relative h20 pointer-events-none text-8 color-transparent text-stroke-2 op-50>
+        <div>⬆ LINKS ⬆</div>
+        <div>⬇ SHARE ⬇</div>
       </div>
 
       <div class="pt-2 flex ">
         <div class="card cursor-pointer px-2" v-for="item, index in list.topPosts" :key="index"
           @click="router.push(item._path)">
-          <span class="title">{{ item.title }}</span>
+          <span class="top-card-title">{{ item.title }}</span>
         </div>
       </div>
     </div>
@@ -105,6 +105,18 @@ const isSameDate = (a: any, b?: any) => {
     color: grey;
   }
 
+  .top-title {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    text-align-last: justify;
+    text-align: justify;
+
+    div {
+      width: 100%;
+    }
+  }
+
 
   .card {
     border-radius: .5rem;
@@ -132,12 +144,22 @@ const isSameDate = (a: any, b?: any) => {
     background-color: rgb(22, 192, 22);
   }
 
-  .title {
+  .title,
+  .top-card-title {
     color: var(--jory-color);
     display: inline-block;
     font-size: 2rem;
     font-weight: 700;
     line-height: 3rem;
+  }
+
+  .top-card-title {
+    transition: all .3s;
+    opacity: 60%;
+  }
+
+  .top-card-title:hover {
+    opacity: 100%;
   }
 
   .excerpt {
