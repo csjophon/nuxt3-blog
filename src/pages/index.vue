@@ -116,7 +116,7 @@ const openInNewTab = (link: string) => {
 
         <div class="profile w-full">
           <div class="flex items-center mr-16">
-            <div class="name color-white mr-2">Jory Joestar⭐</div>
+            <div class="name color-white mr-2">Jory Joestar</div>
             <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
           </div>
           <div class="sub w-full flex justify-between items-center">
