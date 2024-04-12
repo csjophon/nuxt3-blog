@@ -14,8 +14,10 @@
     "dayjs": "^1.11.10",
     "nprogress": "^0.2.0",
     "nuxt": "^3.11.1",
+    "rss": "^1.2.2",
     "sass": "^1.72.0",
     "sass-loader": "^14.1.1",
+    "showdown": "^2.1.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
@@ -26,6 +28,7 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@pinia/nuxt": "^0.5.1",
     "@types/nprogress": "^0.2.3",
+    "@types/rss": "^0.0.32",
     "@unocss/nuxt": "^0.58.6",
     "@vueuse/nuxt": "^10.9.0",
     "nuxt-icon": "^0.6.10"

@@ -24,7 +24,13 @@ export default defineNuxtConfig({
       ],
       // title: `Rwilds - ${this.$t('nav.name')} - ${this.$t('index.title')} - ${this.$t('footer.corporate_name')}`,
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: 'My Site',
+          href: '/rss.xml'
+        }
       ],
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
@@ -149,6 +155,12 @@ export default defineNuxtConfig({
     //       },
     //   },
     // }
+  },
+
+  nitro: {
+    prerender: {
+      routes: ['/rss.xml']
+    }
   },
 
   components: true,

@@ -52,21 +52,6 @@ const isSameDate = (a: any, b?: any) => {
 </script>
 <template>
   <div class="content-list">
-
-    <div class="top mb-4">
-      <div class="top-title" select-none relative h20 pointer-events-none text-8 color-transparent text-stroke-2 op-50>
-        <div>⬆ LINKS ⬆</div>
-        <div>⬇ SHARE ⬇</div>
-      </div>
-
-      <div class="pt-2 flex ">
-        <div class="card cursor-pointer px-2" v-for="item, index in list.topPosts" :key="index"
-          @click="router.push(item._path)">
-          <span class="top-card-title">{{ item.title }}</span>
-        </div>
-      </div>
-    </div>
-
     <div v-for="item, index in list.posts" :key="index">
       <div v-if="!isSameGroup(item, list.posts[index - 1])" select-none relative h20 pointer-events-none slide-enter
         :style="{
@@ -99,6 +84,7 @@ const isSameDate = (a: any, b?: any) => {
 </template>
 <style lang="scss">
 .content-list {
+  margin-top: 2rem;
 
   .top-title,
   .year {

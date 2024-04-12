@@ -53,12 +53,18 @@ const switchTheme = () => {
   <main>
     <div class="sidebar-container">
       <div class="navigation">
-        <button class="theme button" @click="switchTheme">
+        <button class="theme-icon button" @click="switchTheme">
           <UIcon v-show="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
           <UIcon v-show="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
         </button>
-        <button class="home button" @click="router.push('/')">
+        <button class="rss-icon button" @click="router.push('/rss')">
+          <UIcon class="icon" name="i-typcn-rss" dynamic />
+        </button>
+        <button class="home-icon button" @click="router.push('/')">
           <UIcon class="icon" name="i-material-symbols-home" dynamic />
+        </button>
+        <button class="favorites-icon button" @click="router.push('/favorites')">
+          <UIcon class="icon" name="i-ph-star-fill" dynamic />
         </button>
         <button class="archive-icon button" @click="router.push('/archive')">
           <UIcon class="icon" name="i-material-symbols-archive" dynamic />
@@ -70,11 +76,11 @@ const switchTheme = () => {
 
       <div class="hover">
         <button v-show="showBack" @click="back" class="back button">
-          <UIcon class="icon" name="i-lets-icons-back" dynamic />
+          <UIcon class="icon" name="i-streamline-return-2-solid" dynamic />
         </button>
         <transition name="fade" mode="out-in">
           <button v-show="showToTop" @click="toTop" class="totop button">
-            <UIcon class="icon" name="i-bxs-to-top" dynamic />
+            <UIcon class="icon" name="i-octicon-move-to-top-16" dynamic />
           </button>
         </transition>
       </div>
