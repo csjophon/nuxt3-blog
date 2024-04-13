@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 
+import links from '@/assets/links'
+
 onMounted(async () => {
   await nextTick();
 
@@ -18,6 +20,11 @@ onMounted(async () => {
 
 })
 
+const openInNewTab = (link: string) => {
+  window.open(link, '_blank');
+}
+
+
 </script>
 <template>
   <main>
@@ -28,42 +35,20 @@ onMounted(async () => {
       <div class="sidebar">
         <SideBar></SideBar>
       </div>
-      <div class="copyright">
-        <span select-none>© Jory 2024</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
+      <div class="footer">
+        <div class="links">
+          <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
+            <UIcon class="icon" :name="i.icon" dynamic />
+          </button>
+        </div>
+        <div class="copyright">
+          <span select-none>© Jory 2024</span>
+          <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
+        </div>
       </div>
     </div>
   </main>
 </template>
 <style lang="scss">
-.favorites {
-  background-color: var(--jory-body-bg);
-  max-width: 960px;
-  min-width: 375px;
-  box-shadow: var(--jory-body-shadow);
-  box-sizing: content-box;
-
-}
-
-.copyright {
-  z-index: 1000;
-  width: 100%;
-  bottom: 0;
-  color: var(--jory-color);
-  font-size: 13px;
-  text-align: center;
-
-  span {
-    margin-right: .5rem;
-  }
-}
-
-.sidebar {
-  position: fixed;
-  z-index: 1000;
-  margin-left: 1rem;
-  height: 100vh;
-  padding: 2rem 0;
-}
 
 </style>

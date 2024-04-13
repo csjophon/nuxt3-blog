@@ -22,3 +22,61 @@
 html {
   background: var(--jory-bg);
 }
+
+.body,
+.favorites,
+.history,
+.about,
+.blog {
+  background-color: var(--jory-body-bg);
+  max-width: 960px;
+  min-width: 375px;
+  box-shadow: var(--jory-body-shadow);
+  box-sizing: content-box;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  width: 100%;
+  bottom: 0;
+  font-size: 13px;
+  padding: 0 4rem;
+  color: var(--jory-color);
+
+  .links {
+    .button {
+      margin: 0.25rem;
+      background-color: var(--jory-button-bg);
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 0.25rem;
+      transition: all 0.3s;
+    }
+
+    .button:hover {
+      background-color: var(--jory-button-hover-bg);
+    }
+
+    .icon {
+      font-size: 1rem;
+      color: var(--jory-bg);
+    }
+  }
+
+  .copyright {
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 1000;
+  margin-left: 1rem;
+  height: 100vh;
+  padding: 2rem 0;
+}
