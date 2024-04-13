@@ -121,10 +121,6 @@ const openInNewTab = (link: string) => {
 </template>
 
 <style lang="scss">
-
-
-
-
 .bg {
   position: absolute;
   z-index: 998;
