@@ -45,7 +45,7 @@ const openInNewTab = (link: string) => {
           <h1 class="w-full text-center">{{ doc.title }}</h1>
           <p class="w-full text-center font-600">{{ doc.subtitle }}</p>
           <p class="w-full text-center opacity-50">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>
-          <p class="w-full">{{ doc.desc }}</p>
+          <p class="w-full desc">{{ doc.desc }}</p>
           <ContentRenderer :value="doc" />
         </div>
       </ContentDoc>
@@ -81,6 +81,12 @@ const openInNewTab = (link: string) => {
 </template>
 
 <style lang="scss">
+.desc {
+  opacity: .6;
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  background-color: var(--jory-bg);
+}
 
 .toc {
   position: fixed;
@@ -123,6 +129,4 @@ const openInNewTab = (link: string) => {
   text-underline-offset: .3rem;
   transition: border 0.3s ease-in-out;
 }
-
-
 </style>

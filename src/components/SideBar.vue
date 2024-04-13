@@ -57,7 +57,7 @@ const switchTheme = () => {
           <UIcon v-show="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
           <UIcon v-show="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
         </button>
-        <button class="rss-icon button" @click="router.push('/rss')">
+        <button class="rss-icon button" @click="router.push('/')">
           <UIcon class="icon" name="i-typcn-rss" dynamic />
         </button>
         <button class="home-icon button" @click="router.push('/')">

@@ -152,7 +152,7 @@ const openInNewTab = (link: string) => {
   position: absolute;
   z-index: 999;
   right: 0rem;
-  bottom: -7rem;
+  bottom: -6rem;
   display: flex;
   flex-direction: column;
   align-items: end;
