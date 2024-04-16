@@ -66,6 +66,9 @@ const openRssFeed = () => {
         <button class="home-icon button" @click="router.push('/')">
           <UIcon class="icon" name="i-material-symbols-home" dynamic />
         </button>
+        <button class="short-icon button" @click="router.push('/short')">
+          <UIcon class="icon" name="i-mdi-message" dynamic />
+        </button>
         <button class="favorites-icon button" @click="router.push('/favorites')">
           <UIcon class="icon" name="i-ph-star-fill" dynamic />
         </button>
@@ -115,9 +118,10 @@ main {
 
   .button {
     background-color: var(--jory-button-bg);
+    opacity: .85;
     width: 3rem;
     height: 3rem;
-    border-radius: .5rem;
+    border-radius: 2rem;
     transition: all .3s;
     margin-bottom: .5rem;
   }

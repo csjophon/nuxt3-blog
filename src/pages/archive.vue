@@ -13,7 +13,7 @@ const extractChildRoutes = async (items: any) => {
 
   for (let item of items) {
     if (!item.children) {
-      if (!item.top) {
+      if (!item.top || !item.favorites || !item.short) {
         posts.push(item);
       }
     } else {
@@ -68,58 +68,56 @@ const openInNewTab = (link: string) => {
 
 </script>
 <template>
-  <main>
-    <div class="history relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-      <div class="history-body w-full flex-grow-1 p-16">
-        <div class="title">
-          归档
-        </div>
-        <div class="history-body-list">
-          <div class="w-full" v-for="item, index in posts" :key="index">
+  <div class="history relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
+    <div class="history-body w-full flex-grow-1 p-16">
+      <div class="title">
+        历史归档
+      </div>
+      <div class="history-body-list">
+        <div class="w-full" v-for="item, index in posts" :key="index">
 
-            <div v-if="!isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none slide-enter
-              :style="{
-            '--enter-stage': index - 2,
-            '--enter-step': '60ms',
-          }">
-              <span class="year" text-4em color-transparent absolute font-bold text-stroke-2 op10>
-                {{ getYearGroupName(item) }}
-              </span>
+          <div v-if="!isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none slide-enter
+            :style="{
+              '--enter-stage': index - 2,
+              '--enter-step': '60ms',
+            }">
+            <span class="year" text-4em color-transparent absolute font-bold text-stroke-2 op10>
+              {{ getYearGroupName(item) }}
+            </span>
+          </div>
+
+          <div class="w-full slide-enter flex mb-2">
+
+            <div class="date" ws-nowrap
+              v-if="!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1])">
+              {{ formatDate(item.date, 'diy', 'MMM D') }}
             </div>
+            <div v-else class="date placeholder"></div>
 
-            <div class="w-full slide-enter flex mb-2">
-
-              <div class="date" ws-nowrap
-                v-if="!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1])">
-                {{ formatDate(item.date, 'diy', 'MMM D') }}
-              </div>
-              <div v-else class="date placeholder"></div>
-
-              <div class="card cursor-pointer px-2" @click="router.push(item._path)">
-                <div class="card-title">
-                  {{ item.title }}
-                </div>
+            <div class="card cursor-pointer px-2" @click="router.push(item._path)">
+              <div class="card-title">
+                {{ item.title }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="sidebar">
-        <SideBar></SideBar>
+    </div>
+    <div class="sidebar">
+      <SideBar></SideBar>
+    </div>
+    <div class="footer">
+      <div class="links">
+        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
+          <UIcon class="icon" :name="i.icon" dynamic />
+        </button>
       </div>
-      <div class="footer">
-        <div class="links">
-          <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-            <UIcon class="icon" :name="i.icon" dynamic />
-          </button>
-        </div>
-        <div class="copyright">
-          <span select-none>© Jory 2024</span>
-          <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
-        </div>
+      <div class="copyright">
+        <span select-none>© Jory 2024</span>
+        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 <style lang="scss">
 .history {
@@ -173,5 +171,4 @@ const openInNewTab = (link: string) => {
     }
   }
 }
-
 </style>

@@ -15,6 +15,8 @@ desc: 从大学开始，我就想写一个属于自己的博客网站了，一�
 date: 2024-03-31
 type: null
 top: false
+favorites: false
+short: false
 lang: zh
 ---
 

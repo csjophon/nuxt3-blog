@@ -37,47 +37,44 @@ const openInNewTab = (link: string) => {
 
 
 <template>
-  <main>
-
-    <div class="blog relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-      <ContentDoc v-slot="{ doc }">
-        <div class="w-full prose px-8 flex-grow-1">
-          <h1 class="w-full text-center">{{ doc.title }}</h1>
-          <p class="w-full text-center font-600">{{ doc.subtitle }}</p>
-          <p class="w-full text-center opacity-50">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>
-          <p class="w-full desc">{{ doc.desc }}</p>
-          <ContentRenderer :value="doc" />
-        </div>
-      </ContentDoc>
-
-      <div class="sidebar">
-        <SideBar></SideBar>
+  <div class="blog relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
+    <ContentDoc v-slot="{ doc }">
+      <div class="w-full prose px-8 flex-grow-1">
+        <h1 class="w-full text-center">{{ doc.title }}</h1>
+        <p class="w-full text-center font-600">{{ doc.subtitle }}</p>
+        <p class="w-full text-center opacity-50">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>
+        <p class="w-full desc">{{ doc.desc }}</p>
+        <ContentRenderer :value="doc" />
       </div>
-      <div class="footer">
-        <div class="links">
-          <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-            <UIcon class="icon" :name="i.icon" dynamic />
-          </button>
-        </div>
-        <div class="copyright">
-          <span select-none>© Jory 2024</span>
-          <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
-        </div>
-      </div>
+    </ContentDoc>
 
-      <div class="toc">
-        <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
-        <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
-          <li v-for="link in content.toc.value.links" :key="link.text">
-            <a :href="`#${link.id}`">
-              {{ link.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-
+    <div class="sidebar">
+      <SideBar></SideBar>
     </div>
-  </main>
+    <div class="footer">
+      <div class="links">
+        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
+          <UIcon class="icon" :name="i.icon" dynamic />
+        </button>
+      </div>
+      <div class="copyright">
+        <span select-none>© Jory 2024</span>
+        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
+      </div>
+    </div>
+
+    <div class="toc">
+      <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
+      <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
+        <li v-for="link in content.toc.value.links" :key="link.text">
+          <a :href="`#${link.id}`">
+            {{ link.text }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </template>
 
 <style lang="scss">

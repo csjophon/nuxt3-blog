@@ -7,14 +7,11 @@ const { data: navigation } = await useAsyncData('navigation', () => fetchContent
 
 const extractChildRoutes = async (items: any) => {
   let posts: any = [];
-  let topPosts: any[] = [];
 
   for (let item of items) {
     if (!item.children) {
-      if (!item.top) {
+      if (!item.top || !item.favorites || !item.short) {
         posts.push(item);
-      } else {
-        topPosts.push(item);
       }
     } else {
       const childRoutes = await extractChildRoutes(item.children);
@@ -24,9 +21,8 @@ const extractChildRoutes = async (items: any) => {
 
   // 按照 date 字段倒序排列 posts 数组
   posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  topPosts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  return { posts, topPosts };
+  return { posts };
 }
 
 const list = await extractChildRoutes(navigation.value!);

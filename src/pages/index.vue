@@ -69,55 +69,53 @@ const openInNewTab = (link: string) => {
 </script>
 
 <template>
-  <main>
-    <div class="body relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-      <div class="info h-40vh w-full relative">
-        <div class="bg w-full h-full">
-          <div class="mask h-full w-full"></div>
-          <UCarousel ref="carouselRef" class="carousel w-full h-full"
-            :ui="{ item: 'basis-full ', container: 'h-full ' }" v-slot="{ item }" :items="items">
-            <img class="w-full h-full object-cover" :src="item" draggable="false">
-          </UCarousel>
-        </div>
+  <div class="body relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
+    <div class="info h-40vh w-full relative">
+      <div class="bg w-full h-full">
+        <div class="mask h-full w-full"></div>
+        <UCarousel ref="carouselRef" class="carousel w-full h-full" :ui="{ item: 'basis-full ', container: 'h-full ' }"
+          v-slot="{ item }" :items="items">
+          <img class="w-full h-full object-cover" :src="item" draggable="false">
+        </UCarousel>
+      </div>
 
-        <div class="profile w-full">
-          <div class="mr-16 flex">
-            <div class="name color-white mr-4">Jory</div>
-            <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
+      <div class="profile w-full">
+        <div class="mr-16 flex">
+          <div class="name color-white mr-4">Jory</div>
+          <img class="avatar object-cover" src="/avatar.jpg" alt="Avatar" />
+        </div>
+        <div class="sub w-full flex justify-end items-center">
+          <div class="introduce font-size-6 mr-16">
+            三日当空，快脱水
           </div>
-          <div class="sub w-full flex justify-end items-center">
-            <div class="introduce font-size-6 mr-16">
-              三日当空，快脱水
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="content flex-grow-1 w-full p-16">
-        <ContentList></ContentList>
-      </div>
-
-      <div class="sidebar">
-        <SideBar></SideBar>
-      </div>
-
-      <div class="footer">
-        <div class="links">
-          <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-            <UIcon class="icon" :name="i.icon" dynamic />
-          </button>
-        </div>
-        <div class="copyright">
-          <span select-none>© Jory 2024</span>
-          <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
         </div>
       </div>
     </div>
 
+    <div class="shortlist">
+      <ShortList></ShortList>
+    </div>
 
+    <div class="content flex-grow-1 w-full p-16">
+      <ContentList></ContentList>
+    </div>
 
-  </main>
+    <div class="sidebar">
+      <SideBar></SideBar>
+    </div>
+
+    <div class="footer">
+      <div class="links">
+        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
+          <UIcon class="icon" :name="i.icon" dynamic />
+        </button>
+      </div>
+      <div class="copyright">
+        <span select-none>© Jory 2024</span>
+        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
