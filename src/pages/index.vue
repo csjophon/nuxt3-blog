@@ -92,11 +92,11 @@ const openInNewTab = (link: string) => {
       </div>
     </div>
 
-    <div class="shortlist">
+    <div class="shortlist flex-grow-1 w-full px-16 mt-32">
       <ShortList></ShortList>
     </div>
 
-    <div class="content flex-grow-1 w-full p-16">
+    <div class="content flex-grow-1 w-full px-16">
       <ContentList></ContentList>
     </div>
 

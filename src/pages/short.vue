@@ -75,32 +75,13 @@ const openInNewTab = (link: string) => {
       <div class="title">
         日常唠叨
       </div>
-      <div class="short-body-list">
-        <div class="w-full" v-for="item, index in posts" :key="index">
-
-          <div v-if="!isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none slide-enter
-            :style="{
-              '--enter-stage': index - 2,
-              '--enter-step': '60ms',
-            }">
-            <span class="year" text-4em color-transparent absolute font-bold text-stroke-2 op10>
-              {{ getYearGroupName(item) }}
-            </span>
+      <div class="short-body-list" v-for="item, index in posts" :key="index">
+        <div class="item">
+          <div class="desc">
+            {{ item.desc }}
           </div>
-
-          <div class="w-full slide-enter flex mb-2">
-
-            <div class="date" ws-nowrap
-              v-if="!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1])">
-              {{ formatDate(item.date, 'diy', 'MMM D') }}
-            </div>
-            <div v-else class="date placeholder"></div>
-
-            <div class="card cursor-pointer px-2" @click="router.push(item._path)">
-              <div class="card-title">
-                {{ item.title }}
-              </div>
-            </div>
+          <div class="time">
+            - {{ formatDate(item.date, 'diy', 'MMM D') }}
           </div>
         </div>
       </div>
@@ -127,50 +108,42 @@ const openInNewTab = (link: string) => {
     color: var(--jory-color);
     font-size: 2.5rem;
     font-weight: 600;
-
   }
 
   &-body-list {
-    .year {
 
-      color: grey;
-    }
-
-
-    .card {
-      border-radius: .5rem;
-      transition: all .3s;
-    }
-
-    .card-title::after {
-      display: block;
-      content: " ";
-      width: 1rem;
-      height: .25rem;
-      border-radius: .5rem;
-      background-color: var(--jory-color);
-      transition: all .3s;
-    }
-
-    .card:hover .card-title::after {
-      width: 100%;
-      background-color: rgb(22, 192, 22);
-    }
-
-    .card-title {
-      color: var(--jory-color);
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 2rem;
-    }
-
-    .date {
-      line-height: 2rem;
-      min-width: 4rem;
-      font-size: 1rem;
-      color: var(--jory-color);
-    }
-
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0;
+    width: calc(60vw - 8rem);
+    overflow-x: auto;
+    /* 允许水平滚动 */
+    scrollbar-width: none;
+    /* 隐藏滚动条（仅适用于Firefox） */
+    -ms-overflow-style: none;
+    /* 隐藏滚动条（仅适用于IE/Edge） */
   }
+
+  .item {
+    margin-right: 1rem;
+    position: relative;
+    z-index: 1000;
+    min-width: calc(375px - 32px);
+    background-color: var(--jory-bg);
+    color: var(--jory-color);
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    font-size: 15px;
+    box-shadow: var(--jory-short-shadow);
+  }
+
+  .time {
+    width: 100%;
+    opacity: .6;
+    display: flex;
+    justify-content: end;
+    margin-top: .5rem;
+  }
+
 }
 </style>

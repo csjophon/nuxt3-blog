@@ -10,7 +10,7 @@ const extractChildRoutes = async (items: any) => {
 
   for (let item of items) {
     if (!item.children) {
-      if (!item.top || !item.favorites || !item.short) {
+      if (!(item.top || item.favorites || item.short)) {
         posts.push(item);
       }
     } else {
