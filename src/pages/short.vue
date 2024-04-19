@@ -125,10 +125,9 @@ const openInNewTab = (link: string) => {
   }
 
   .item {
-    margin-right: 1rem;
     position: relative;
     z-index: 1000;
-    min-width: calc(375px - 32px);
+    min-width: 375px;
     background-color: var(--jory-bg);
     color: var(--jory-color);
     padding: 1rem 1.5rem;

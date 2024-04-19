@@ -81,8 +81,8 @@ onMounted(async () => {
   &-body {
     display: flex;
     flex-direction: row;
-    padding: 1rem 0;
-    width: calc(60vw - 8rem);
+    padding: 1rem 5rem;
+    // width: calc(60vw - 8rem);
     overflow-x: auto;
     /* 允许水平滚动 */
     scrollbar-width: none;
@@ -92,10 +92,9 @@ onMounted(async () => {
   }
 
   .item {
-    margin-right: 1rem;
     position: relative;
     z-index: 1000;
-    min-width: calc(375px - 32px);
+    min-width: 375px;
     background-color: var(--jory-bg);
     color: var(--jory-color);
     padding: 1rem 1.5rem;
