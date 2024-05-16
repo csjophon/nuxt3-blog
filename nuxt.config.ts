@@ -19,10 +19,9 @@ export default defineNuxtConfig({
     layoutTransition: { name: 'layouts', mode: 'out-in' },
     head: {
       meta: [
-        // { hid: 'description', name: 'description', content: this.$t('seo.description') },
-        // { hid: 'keywords', name: 'keywords', content: this.$t('seo.keywords') }
+        { hid: 'google-site-verification', name: "google-site-verification", content: "v_LHAQrxt7BUZUApQHG4mpecWI1y6hakdu6L6NAdw3k" }
       ],
-      // title: `Rwilds - ${this.$t('nav.name')} - ${this.$t('index.title')} - ${this.$t('footer.corporate_name')}`,
+      title: `Rwilds - blog`,
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
