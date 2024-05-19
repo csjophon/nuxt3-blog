@@ -1,43 +1,30 @@
 import RSS from 'rss';
-import showdown from 'showdown'
-import { join } from 'path'
-import { readFile } from 'fs/promises'
+//@ts-ignore
+import { serverQueryContent } from '#content/server'
 
-const SITE_URL = 'http://josenong.top'
-
-const converter = new showdown.Converter()
-
-
+const SITE_URL = 'http://rwilds.top'
 
 //@ts-ignore
 export default defineEventHandler(async (event) => {
   const feed = new RSS({
-    title: 'My Site',
+    title: "Jory Joestar's blog ",
     site_url: SITE_URL,
     feed_url: SITE_URL + '/rss.xml',
   })
 
-  const blogPosts = [];
-  const converter = new showdown.Converter();
+  const contentList = await serverQueryContent(event).find()
 
-  // .slice(0, 10) // limit the output to 10 posts only
-  for (const doc of blogPosts) {
-    const filename = join(process.cwd(), 'content', doc._file)
-    const markdownText = await readFile(filename, 'utf8')
-    let contentWithoutFrontmatter = markdownText
-    const frontmatterEndIndex = markdownText.indexOf('---', 3)
-    if (frontmatterEndIndex !== -1) {
-      contentWithoutFrontmatter = markdownText.slice(frontmatterEndIndex + 3).trim()
-    }
-    const html = converter.makeHtml(contentWithoutFrontmatter)
+  const posts = contentList
+    .filter(doc => doc.short === false)
+  // .slice(0, 10)
+  // console.log(posts)
+
+  for (const doc of posts) {
     feed.item({
       title: doc.title ?? '-',
       url: `${SITE_URL}${doc._path}`,
-      date: doc.createdAt,
-      description: doc.description,
-      custom_elements: [
-        { 'content:encoded': { _cdata: html } }
-      ]
+      date: doc.date,
+      description: doc.desc,
     })
   }
   event.res.setHeader('content-type', 'text/xml')

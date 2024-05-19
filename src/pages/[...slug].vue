@@ -5,11 +5,10 @@ import links from '@/assets/links'
 
 const content = useContent()
 
-console.log(content)
+// console.log(content)
 
 onMounted(async () => {
   await nextTick();
-
 
   const blog = document.querySelector('.blog') as HTMLElement;
   const sidebar = document.querySelector('.sidebar') as HTMLElement;

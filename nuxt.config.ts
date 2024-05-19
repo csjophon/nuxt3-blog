@@ -27,7 +27,7 @@ export default defineNuxtConfig({
         {
           rel: 'alternate',
           type: 'application/rss+xml',
-          title: 'My Site',
+          title: 'Jory Joestar\' blog',
           href: '/rss.xml'
         }
       ],
@@ -95,12 +95,8 @@ export default defineNuxtConfig({
   },
 
   content: {
-    documentDriven: {
-      layoutFallbacks: ['default'],
-    },
-    markdown: {
-
-    },
+    documentDriven: true,
+    markdown: {},
     highlight: {
       langs: [
         'javascript',
