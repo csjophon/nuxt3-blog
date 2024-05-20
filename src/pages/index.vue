@@ -8,8 +8,6 @@ useSeoMeta({
   ogImage: '',
 })
 
-import links from '@/assets/links'
-
 
 const carouselRef = ref()
 
@@ -48,14 +46,11 @@ onUnmounted(() => {
   clearInterval(carouselTimer.value);
 });
 
-const openInNewTab = (link: string) => {
-  window.open(link, '_blank');
-}
 
 </script>
 
 <template>
-  <div class="body relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
+  <div class="index relative">
     <div class="info h-15vh w-full relative">
       <div class="profile w-full">
         <div class="name en">Jory Joestar</div>
@@ -68,22 +63,6 @@ const openInNewTab = (link: string) => {
 
     <div class="content flex-grow-1 w-full px-16">
       <ContentList></ContentList>
-    </div>
-
-    <div class="sidebar">
-      <SideBar></SideBar>
-    </div>
-
-    <div class="footer">
-      <div class="links">
-        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-          <UIcon class="icon" :name="i.icon" dynamic />
-        </button>
-      </div>
-      <div class="copyright">
-        <span select-none>© Jory 2024</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
-      </div>
     </div>
   </div>
 </template>

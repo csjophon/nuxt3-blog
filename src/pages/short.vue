@@ -2,8 +2,6 @@
 
 import { formatDate } from '@/utils/date';
 
-import links from '@/assets/links'
-
 const router = useRouter();
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
@@ -63,18 +61,13 @@ onMounted(async () => {
 
 })
 
-const openInNewTab = (link: string) => {
-  window.open(link, '_blank');
-}
-
-
 </script>
 <template>
-  <div class="short relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-    <div class="short-boby w-full flex-grow-1 p-16">
-      <div class="title">
-        日常唠叨
-      </div>
+  <div class="short">
+    <div class="title">
+      日常唠叨
+    </div>
+    <div class="short-boby w-full flex-grow-1 px-16 py-8">
       <div class="short-body-list" v-for="item, index in posts" :key="index">
         <div class="item">
           <div class="desc">
@@ -86,28 +79,17 @@ const openInNewTab = (link: string) => {
         </div>
       </div>
     </div>
-    <div class="sidebar">
-      <SideBar></SideBar>
-    </div>
-    <div class="footer">
-      <div class="links">
-        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-          <UIcon class="icon" :name="i.icon" dynamic />
-        </button>
-      </div>
-      <div class="copyright">
-        <span select-none>© Jory 2024</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
-      </div>
-    </div>
   </div>
 </template>
 <style lang="scss">
 .short {
   .title {
     color: var(--jory-color);
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: bold;
+    border-bottom: .25rem dashed var(--jory-color);
+    opacity: .15;
+    padding: 1rem;
   }
 
   &-body-list {

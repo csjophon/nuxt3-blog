@@ -24,12 +24,7 @@ html {
   overflow-y: scroll;
 }
 
-.body,
-.favorites,
-.history,
-.about,
-.blog,
-.short {
+.body {
   background-color: var(--jory-body-bg);
   max-width: 960px;
   min-width: 375px;
@@ -38,6 +33,7 @@ html {
 }
 
 .footer {
+  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;

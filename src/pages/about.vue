@@ -1,8 +1,5 @@
 <script lang="ts" setup>
 
-import links from '@/assets/links'
-
-
 onMounted(async () => {
   await nextTick();
 
@@ -28,11 +25,11 @@ const openInNewTab = (link: string) => {
 
 </script>
 <template>
-  <div class="about relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-    <div class="about-boby w-full flex-grow-1 p-16">
-      <div class="title pb-4">
-        About me
-      </div>
+  <div class="about">
+    <div class="title pb-4">
+      About me
+    </div>
+    <div class="about-boby w-full flex-grow-1 px-16 py-8">
       <div class="introduce">
         <div class="p">
           <P class="en">My name in Chinese is Junfeng Huang, while in English it's Jory Joestar.</P>
@@ -81,20 +78,7 @@ const openInNewTab = (link: string) => {
         </div>
       </div>
     </div>
-    <div class="sidebar">
-      <SideBar></SideBar>
-    </div>
-    <div class="footer">
-      <div class="links">
-        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-          <UIcon class="icon" :name="i.icon" dynamic />
-        </button>
-      </div>
-      <div class="copyright">
-        <span select-none>© Jory 2024</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
-      </div>
-    </div>
+
   </div>
 </template>
 <style lang="scss">
@@ -102,8 +86,11 @@ const openInNewTab = (link: string) => {
 
   .title {
     color: var(--jory-color);
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: bold;
+    border-bottom: .25rem dashed var(--jory-color);
+    opacity: .15;
+    padding: 1rem;
 
   }
 

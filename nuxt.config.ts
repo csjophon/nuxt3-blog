@@ -95,7 +95,7 @@ export default defineNuxtConfig({
   },
 
   content: {
-    documentDriven: true,
+    documentDriven: false,
     markdown: {},
     highlight: {
       langs: [

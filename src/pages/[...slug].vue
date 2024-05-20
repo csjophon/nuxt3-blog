@@ -1,7 +1,10 @@
 <script setup lang="ts">
 
-import links from '@/assets/links'
+definePageMeta({
+  documentDriven: true
+})
 
+import links from '@/assets/links'
 
 const content = useContent()
 
@@ -47,20 +50,7 @@ const openInNewTab = (link: string) => {
       </div>
     </ContentDoc>
 
-    <div class="sidebar">
-      <SideBar></SideBar>
-    </div>
-    <div class="footer">
-      <div class="links">
-        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-          <UIcon class="icon" :name="i.icon" dynamic />
-        </button>
-      </div>
-      <div class="copyright">
-        <span select-none>© Jory 2024</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
-      </div>
-    </div>
+
 
     <div class="toc">
       <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
