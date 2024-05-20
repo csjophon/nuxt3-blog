@@ -1,12 +1,8 @@
 <script setup lang="ts">
 
-definePageMeta({
-  documentDriven: true
-})
-
 import links from '@/assets/links'
 
-const content = useContent()
+// const content = useContent()
 
 // console.log(content)
 
@@ -52,16 +48,16 @@ const openInNewTab = (link: string) => {
 
 
 
-    <div class="toc">
-      <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
-      <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
+    <!-- <div class="toc">
+      <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic /> -->
+    <!-- <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
         <li v-for="link in content.toc.value.links" :key="link.text">
           <a :href="`#${link.id}`">
             {{ link.text }}
           </a>
         </li>
-      </ul>
-    </div>
+      </ul> -->
+    <!-- </div> -->
 
   </div>
 </template>
@@ -74,45 +70,45 @@ const openInNewTab = (link: string) => {
   background-color: var(--jory-bg);
 }
 
-.toc {
-  position: fixed;
-  z-index: 1000;
-  margin-right: 1rem;
-  height: 100vh;
-  padding: 2rem 0;
-  min-width: 8rem;
-  max-width: 8rem;
-  color: var(--jory-color);
+// .toc {
+//   position: fixed;
+//   z-index: 1000;
+//   margin-right: 1rem;
+//   height: 100vh;
+//   padding: 2rem 0;
+//   min-width: 8rem;
+//   max-width: 8rem;
+//   color: var(--jory-color);
 
-  li {
-    margin: .5rem 0;
-    transition: all .3s;
-    opacity: .5;
-  }
+//   li {
+//     margin: .5rem 0;
+//     transition: all .3s;
+//     opacity: .5;
+//   }
 
 
-  &-icon {
-    font-size: 2rem;
-    position: absolute;
-    left: -1rem;
-    transition: all .3s;
-    opacity: .6;
-  }
+//   &-icon {
+//     font-size: 2rem;
+//     position: absolute;
+//     left: -1rem;
+//     transition: all .3s;
+//     opacity: .6;
+//   }
 
-  &-main {
-    margin-top: 2.5rem;
-  }
-}
+//   &-main {
+//     margin-top: 2.5rem;
+//   }
+// }
 
-.toc:hover .toc-icon {
-  opacity: 1;
-}
+// .toc:hover .toc-icon {
+//   opacity: 1;
+// }
 
-.toc-main>li:hover {
-  opacity: 1;
-  font-weight: inherit;
-  text-decoration: underline;
-  text-underline-offset: .3rem;
-  transition: border 0.3s ease-in-out;
-}
+// .toc-main>li:hover {
+//   opacity: 1;
+//   font-weight: inherit;
+//   text-decoration: underline;
+//   text-underline-offset: .3rem;
+//   transition: border 0.3s ease-in-out;
+// }
 </style>
