@@ -6,15 +6,16 @@ const route = useRoute();
 
 const baseUrl = `/`
 const showToTop = ref<boolean>(false)
-const showBack = ref<boolean>(true)
+const showBack = computed(() => {
+  return route.path !== baseUrl
+})
 
 onMounted(() => {
   document.addEventListener('scroll', handleScroll)
 
-  showBack.value = route.path !== baseUrl
+
 
   currentThemeIndex.value = themeList.indexOf(colorMode.preference);
-
 })
 
 // 取消滚动事件

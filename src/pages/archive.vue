@@ -115,10 +115,8 @@ onMounted(() => {
 
   &-body-list {
     .year {
-
       color: grey;
     }
-
 
     .card {
       border-radius: .5rem;

@@ -22,7 +22,6 @@ const openInNewTab = (link: string) => {
   window.open(link, '_blank');
 }
 
-
 </script>
 <template>
   <div class="about">

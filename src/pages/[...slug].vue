@@ -11,11 +11,11 @@ onMounted(async () => {
 
   const blog = document.querySelector('.blog') as HTMLElement;
   const sidebar = document.querySelector('.sidebar') as HTMLElement;
-  const toc = document.querySelector('.toc') as HTMLElement;
+  // const toc = document.querySelector('.toc') as HTMLElement;
 
   const updateSidebarPosition = () => {
     sidebar.style.left = `${blog.getBoundingClientRect().right}px`;
-    toc.style.right = `${blog.getBoundingClientRect().right}px`;
+    // toc.style.right = `${blog.getBoundingClientRect().right}px`;
   }
 
   window.addEventListener('scroll', updateSidebarPosition);
