@@ -112,6 +112,7 @@ main {
     background-color: var(--jory-button-bg);
     border-radius: 2rem;
     opacity: .85;
+
   }
 
   .hover {
@@ -124,18 +125,26 @@ main {
   .button2 {
     width: 3rem;
     height: 3rem;
-    border-radius: 2rem;
+    // border-radius: 2rem;
     transition: all .3s;
     margin-bottom: .5rem;
   }
 
   .button2 {
+    border-radius: 2rem;
     opacity: .85;
     background-color: var(--jory-button-bg);
   }
 
+  .button:first-child {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
   .button:last-child {
     margin-bottom: 0;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
   }
 
   .button:hover,
