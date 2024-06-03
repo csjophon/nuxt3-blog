@@ -58,7 +58,7 @@ onMounted(async () => {
     </div>
     <div class="shortList-body">
       <div class="item" v-for="item, index in posts" :key="index">
-        <div class="desc">
+        <div class="short-desc">
           {{ item.desc }}
         </div>
         <div class="time">

@@ -83,14 +83,12 @@ const openRssFeed = () => {
         </div>
 
         <div class="hover">
-          <button v-show="showBack" @click="back" class="back button">
+          <button :style="showBack ? 'opacity: 1;' : 'opacity: 0;'" @click="back" class="back button2">
             <UIcon class="icon" name="i-streamline-return-2-solid" dynamic />
           </button>
-          <transition name="fade" mode="out-in">
-            <button v-show="showToTop" @click="toTop" class="totop button">
-              <UIcon class="icon" name="i-octicon-move-to-top-16" dynamic />
-            </button>
-          </transition>
+          <button :style="showToTop ? 'opacity: 1;' : 'opacity: 0;'" @click="toTop" class="totop button2">
+            <UIcon class="icon" name="i-octicon-move-to-top-16" dynamic />
+          </button>
         </div>
       </div>
     </ClientOnly>
@@ -111,6 +109,9 @@ main {
   .navigation {
     display: flex;
     flex-direction: column;
+    background-color: var(--jory-button-bg);
+    border-radius: 2rem;
+    opacity: .85;
   }
 
   .hover {
@@ -119,9 +120,8 @@ main {
     transition: all .3s;
   }
 
-  .button {
-    background-color: var(--jory-button-bg);
-    opacity: .85;
+  .button,
+  .button2 {
     width: 3rem;
     height: 3rem;
     border-radius: 2rem;
@@ -129,7 +129,17 @@ main {
     margin-bottom: .5rem;
   }
 
-  .button:hover {
+  .button2 {
+    opacity: .85;
+    background-color: var(--jory-button-bg);
+  }
+
+  .button:last-child {
+    margin-bottom: 0;
+  }
+
+  .button:hover,
+  .button2:hover {
     background-color: var(--jory-button-hover-bg);
   }
 
