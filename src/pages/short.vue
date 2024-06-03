@@ -70,7 +70,7 @@ onMounted(async () => {
     <div class="short-boby w-full flex-grow-1 px-16 py-8">
       <div class="short-body-list" v-for="item, index in posts" :key="index">
         <div class="item">
-          <div class="desc">
+          <div class="short-desc">
             {{ item.desc }}
           </div>
           <div class="time">
