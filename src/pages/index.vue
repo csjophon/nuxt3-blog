@@ -114,7 +114,7 @@ onUnmounted(() => {
   align-items: center;
   color: var(--jory-color);
   border-bottom: .25rem dashed var(--jory-color);
-  opacity: .15;
+  opacity: .10;
 
   .name {
     &.en {

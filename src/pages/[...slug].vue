@@ -37,7 +37,7 @@ const openInNewTab = (link: string) => {
 <template>
   <div class="blog relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
     <ContentDoc v-slot="{ doc }">
-      <div class="w-full prose px-8 flex-grow-1">
+      <div class="w-full prose px-16 flex-grow-1">
         <h1 class="w-full text-center">{{ doc.title }}</h1>
         <p class="w-full text-center font-600">{{ doc.subtitle }}</p>
         <p class="w-full text-center opacity-50">{{ formatDate(doc.date, 'diy', 'MMM D, YYYY') }}</p>

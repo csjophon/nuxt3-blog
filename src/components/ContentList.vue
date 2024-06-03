@@ -70,7 +70,7 @@ const isSameDate = (a: any, b?: any) => {
           <div class="title">
             {{ item.title }}
           </div>
-          <div class="excerpt">
+          <div class="excerpt op-75">
             {{ item.desc }}
           </div>
         </div>

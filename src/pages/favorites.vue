@@ -109,7 +109,7 @@ onMounted(async () => {
     font-size: 5rem;
     font-weight: bold;
     border-bottom: .25rem dashed var(--jory-color);
-    opacity: .15;
+    opacity: .10;
     padding: 1rem;
   }
 
