@@ -2,20 +2,6 @@
 
 onMounted(async () => {
   await nextTick();
-
-  const about = document.querySelector('.about') as HTMLElement;
-  const sidebar = document.querySelector('.sidebar') as HTMLElement;
-
-  const updateSidebarPosition = () => {
-    sidebar.style.left = `${about.getBoundingClientRect().right}px`;
-  }
-
-  window.addEventListener('scroll', updateSidebarPosition);
-  window.addEventListener('resize', updateSidebarPosition);
-
-  // 初始设置一次
-  updateSidebarPosition();
-
 })
 
 const openInNewTab = (link: string) => {

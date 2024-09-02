@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       meta: [
         { hid: 'google-site-verification', name: "google-site-verification", content: "v_LHAQrxt7BUZUApQHG4mpecWI1y6hakdu6L6NAdw3k" }
       ],
-      title: `Rwilds - blog`,
+      title: 'Jory Joestar',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {

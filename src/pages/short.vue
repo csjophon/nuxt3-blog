@@ -46,19 +46,6 @@ const isSameDate = (a: any, b?: any) => a && b && getDate(a.date) === getDate(b?
 onMounted(async () => {
   await nextTick();
 
-  const short = document.querySelector('.short') as HTMLElement;
-  const sidebar = document.querySelector('.sidebar') as HTMLElement;
-
-  const updateSidebarPosition = () => {
-    sidebar.style.left = `${short.getBoundingClientRect().right}px`;
-  }
-
-  window.addEventListener('scroll', updateSidebarPosition);
-  window.addEventListener('resize', updateSidebarPosition);
-
-  // 初始设置一次
-  updateSidebarPosition();
-
 })
 
 </script>

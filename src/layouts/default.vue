@@ -8,24 +8,28 @@ const openInNewTab = (link: string) => {
 
 </script>
 <template>
-  <div class="layout-default body relative container mx-auto flex w-60vw flex-col min-h-100vh overflow-y-auto">
-    <main class="">
-      <slot />
-    </main>
+  <div class="layout-default">
 
-    <div class="sidebar">
-      <SideBar></SideBar>
+    <div class="g-bg">
+      <div class="g-polygon-1"></div>
+      <div class="g-polygon-2"></div>
+      <div class="g-polygon-3"></div>
     </div>
 
-    <div class="footer">
-      <div class="links">
-        <button v-for="i, idx in links " :key="idx" :class="[idx, 'button']" @click="openInNewTab(i.link)">
-          <UIcon class="icon" :name="i.icon" dynamic />
-        </button>
+    <div class="main-container">
+      <div class="sidebar">
+        <SideBar></SideBar>
       </div>
-      <div class="copyright">
-        <span select-none>© Jory 2024</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-1</a>
+
+      <main>
+        <slot />
+      </main>
+
+      <div class="footer">
+        <div class="copyright">
+          <span select-none>© Jory 2024</span>
+          <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134767号-2</a>
+        </div>
       </div>
     </div>
   </div>

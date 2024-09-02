@@ -71,22 +71,16 @@ const openRssFeed = () => {
           <button class="short-icon button" @click="router.push('/short')">
             <UIcon class="icon" name="i-mdi-message" dynamic />
           </button>
-          <button class="favorites-icon button" @click="router.push('/favorites')">
-            <UIcon class="icon" name="i-ph-star-fill" dynamic />
-          </button>
           <button class="archive-icon button" @click="router.push('/archive')">
             <UIcon class="icon" name="i-material-symbols-archive" dynamic />
-          </button>
-          <button class="about-icon button" @click="router.push('/about')">
-            <UIcon class="icon" name="i-cib-about-me" dynamic />
           </button>
         </div>
 
         <div class="hover">
-          <button :style="showBack ? 'opacity: 1;' : 'opacity: 0;'" @click="back" class="back button2">
+          <button :class="{ displaynone: !showBack }" @click="back" class="back button2">
             <UIcon class="icon" name="i-streamline-return-2-solid" dynamic />
           </button>
-          <button :style="showToTop ? 'opacity: 1;' : 'opacity: 0;'" @click="toTop" class="totop button2">
+          <button :class="{ displaynone: !showToTop }" @click="toTop" class="totop button2">
             <UIcon class="icon" name="i-octicon-move-to-top-16" dynamic />
           </button>
         </div>
@@ -101,50 +95,46 @@ main {
 }
 
 .sidebar-container {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
   .navigation {
     display: flex;
-    flex-direction: column;
     background-color: var(--jory-button-bg);
-    border-radius: 2rem;
     opacity: .85;
 
   }
 
   .hover {
     display: flex;
-    flex-direction: column;
-    transition: all .3s;
+
+    .button2 {
+      transition: opacity .9s, transform .3s;
+      transform-origin: center;
+    }
+
+    .displaynone {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+
   }
 
   .button,
   .button2 {
     width: 3rem;
     height: 3rem;
+    opacity: 1;
     // border-radius: 2rem;
     transition: all .3s;
-    margin-bottom: .5rem;
   }
 
   .button2 {
     border-radius: 2rem;
     opacity: .85;
     background-color: var(--jory-button-bg);
-  }
-
-  .button:first-child {
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-  }
-
-  .button:last-child {
-    margin-bottom: 0;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
   }
 
   .button:hover,
