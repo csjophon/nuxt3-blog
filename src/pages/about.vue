@@ -10,10 +10,7 @@ const openInNewTab = (link: string) => {
 
 </script>
 <template>
-  <div class="about">
-    <div class="title pb-4">
-      About me
-    </div>
+  <div class="about relative">
     <div class="about-boby w-full flex-grow-1 px-16 py-8">
       <div class="introduce">
         <div class="p">

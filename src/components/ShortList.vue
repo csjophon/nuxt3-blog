@@ -81,7 +81,7 @@ onMounted(async () => {
   &-body {
     display: flex;
     flex-direction: row;
-    padding: 1rem 5rem;
+    padding: 3rem 5rem 0;
     // width: calc(60vw - 8rem);
     overflow-x: auto;
     /* 允许水平滚动 */
@@ -95,12 +95,12 @@ onMounted(async () => {
     position: relative;
     z-index: 1000;
     min-width: 375px;
-    background-color: var(--jory-bg);
+    // background-color: var(--jory-bg);
     color: var(--jory-color);
     padding: 1rem 1.5rem;
     border-radius: .5rem;
     font-size: 15px;
-    box-shadow: var(--jory-short-shadow);
+    // box-shadow: var(--jory-short-shadow);
   }
 
   .time {

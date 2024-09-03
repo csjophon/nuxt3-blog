@@ -49,11 +49,11 @@ onMounted(() => {
 
 </script>
 <template>
-  <div class="history">
+  <div class="history relative">
     <div class="title">
       历史归档
     </div>
-    <div class="history-body w-full flex-grow-1 px-16 py-8">
+    <div class="history-body">
 
       <div class="history-body-list">
         <div class="w-full" v-for="item, index in posts" :key="index">
@@ -93,12 +93,10 @@ onMounted(() => {
 
   .title {
     color: var(--jory-color);
-    font-size: 5rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    border-bottom: .25rem dashed var(--jory-color);
-    opacity: .10;
+    opacity: .25;
     padding: 1rem;
-
   }
 
   &-body-list {

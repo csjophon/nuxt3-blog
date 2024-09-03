@@ -54,7 +54,7 @@ onMounted(async () => {
     <div class="title">
       日常唠叨
     </div>
-    <div class="short-boby w-full flex-grow-1 px-16 py-8">
+    <div class="short-boby">
       <div class="short-body-list" v-for="item, index in posts" :key="index">
         <div class="item">
           <div class="short-desc">
@@ -72,10 +72,9 @@ onMounted(async () => {
 .short {
   .title {
     color: var(--jory-color);
-    font-size: 5rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    border-bottom: .25rem dashed var(--jory-color);
-    opacity: .10;
+    opacity: .25;
     padding: 1rem;
   }
 
@@ -97,12 +96,12 @@ onMounted(async () => {
     position: relative;
     z-index: 1000;
     min-width: 375px;
-    background-color: var(--jory-bg);
+    // background-color: var(--jory-bg);
     color: var(--jory-color);
     padding: 1rem 1.5rem;
     border-radius: .5rem;
     font-size: 15px;
-    box-shadow: var(--jory-short-shadow);
+    // box-shadow: var(--jory-short-shadow);
   }
 
   .time {

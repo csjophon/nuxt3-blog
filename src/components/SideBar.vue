@@ -58,13 +58,6 @@ const openRssFeed = () => {
     <ClientOnly>
       <div class="sidebar-container">
         <div class="navigation">
-          <button class="theme-icon button" @click="switchTheme">
-            <UIcon v-show="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
-            <UIcon v-show="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
-          </button>
-          <button class="rss-icon button" @click="openRssFeed">
-            <UIcon class="icon" name="i-typcn-rss" dynamic />
-          </button>
           <button class="home-icon button" @click="router.push('/')">
             <UIcon class="icon" name="i-material-symbols-home" dynamic />
           </button>
@@ -73,6 +66,13 @@ const openRssFeed = () => {
           </button>
           <button class="archive-icon button" @click="router.push('/archive')">
             <UIcon class="icon" name="i-material-symbols-archive" dynamic />
+          </button>
+          <button class="theme-icon button" @click="switchTheme">
+            <UIcon v-show="colorMode.value === 'dark'" class="icon moon" name="i-ph-moon-fill" dynamic />
+            <UIcon v-show="colorMode.value === 'light'" class="icon sun" name="i-ph-sun-fill" dynamic />
+          </button>
+          <button class="rss-icon button" @click="openRssFeed">
+            <UIcon class="icon" name="i-typcn-rss" dynamic />
           </button>
         </div>
 
@@ -96,16 +96,18 @@ main {
 
 .sidebar-container {
   display: flex;
-  flex-direction: column;
+
   .navigation {
     display: flex;
     background-color: var(--jory-button-bg);
+    border-radius: .5rem;
     opacity: .85;
 
   }
 
   .hover {
     display: flex;
+    margin-left: 1rem;
 
     .button2 {
       transition: opacity .9s, transform .3s;
@@ -124,15 +126,18 @@ main {
 
   .button,
   .button2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 3rem;
     height: 3rem;
     opacity: 1;
-    // border-radius: 2rem;
+    border-radius: .5rem;
     transition: all .3s;
   }
 
   .button2 {
-    border-radius: 2rem;
+    border-radius: .5rem;
     opacity: .85;
     background-color: var(--jory-button-bg);
   }
