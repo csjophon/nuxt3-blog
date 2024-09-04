@@ -2,43 +2,10 @@
 
 const colorMode = useColorMode()
 const router = useRouter();
-const route = useRoute();
-
-const baseUrl = `/`
-const showToTop = ref<boolean>(false)
-const showBack = computed(() => {
-  return route.path !== baseUrl
-})
 
 onMounted(() => {
-  document.addEventListener('scroll', handleScroll)
-
-
-
   currentThemeIndex.value = themeList.indexOf(colorMode.preference);
 })
-
-// 取消滚动事件
-onUnmounted(() => {
-  document.removeEventListener('scroll', handleScroll)
-})
-
-// 监听滚动事件
-const handleScroll = () => {
-  const scrollTop = document.documentElement.scrollTop
-  showToTop.value = scrollTop > 128
-}
-const toTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
-}
-
-const back = () => {
-  router.back()
-}
-
 
 const themeList = ['dark', 'light']
 const currentThemeIndex = ref(0)
@@ -75,15 +42,6 @@ const openRssFeed = () => {
             <UIcon class="icon" name="i-typcn-rss" dynamic />
           </button>
         </div>
-
-        <div class="hover">
-          <button :class="{ displaynone: !showBack }" @click="back" class="back button2">
-            <UIcon class="icon" name="i-streamline-return-2-solid" dynamic />
-          </button>
-          <button :class="{ displaynone: !showToTop }" @click="toTop" class="totop button2">
-            <UIcon class="icon" name="i-octicon-move-to-top-16" dynamic />
-          </button>
-        </div>
       </div>
     </ClientOnly>
   </main>
@@ -106,6 +64,7 @@ main {
   }
 
   .hover {
+    position: fixed;
     display: flex;
     margin-left: 1rem;
 

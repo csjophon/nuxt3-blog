@@ -21,7 +21,7 @@ const openInNewTab = (link: string) => {
         <SideBar></SideBar>
       </div>
 
-      <main class="w-full">
+      <main class="w-full pb-20">
         <slot />
       </main>
 
