@@ -76,8 +76,8 @@ jobs:
           # 删除压缩包
           script: |
             cd /www/wwwroot/blog/.output
-            url=$(curl -s -H 'Authorization: token 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' https://api.github.com/repos/JoryJoestar/blog-build/releases/latest | jq -r '.assets[0].url')
-            curl -vLJ -H 'Authorization: token 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' -H 'Accept: application/octet-stream' "$url" --output release.tgz
+            url=$(curl -s -H 'Authorization: token ${{ secrets.TOKEN }}' https://api.github.com/repos/JoryJoestar/blog-build/releases/latest | jq -r '.assets[0].url')
+            curl -vLJ -H 'Authorization: token ${{ secrets.TOKEN }}' -H 'Accept: application/octet-stream' "$url" --output release.tgz
             tar zxvf release.tgz
             pm2 restart blog
             rm -rf release.tgz
