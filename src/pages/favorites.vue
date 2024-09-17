@@ -6,6 +6,7 @@ const children_tpye = ref<string>('')
 const favorites: Favorites[] = [
   {
     parent_type: '个人网站',
+    children_type: '科学上网',
     favorites: [
       {
         name: '极速Max',
@@ -26,8 +27,29 @@ const favorites: Favorites[] = [
   }
 ]
 
-const favorites_list = computed(() => {
+const favorites_tree = computed(() => {
+  // const structure = [];
 
+  // favorites.forEach(item => {
+  //   const parent = structure.find(p => p.parent_type === item.parent_type);
+  //   if (parent) {
+  //     parent.children.push({
+  //       children_type: item.children_type,
+  //       url: item.url
+  //     });
+  //   } else {
+  //     structure.push({
+  //       parent_type: item.parent_type,
+  //       isOpen: false,
+  //       children: [{
+  //         children_type: item.children_type,
+  //         url: item.url
+  //       }]
+  //     });
+  //   }
+  // });
+
+  // return structure;
 });
 
 const toggle = (item: any) => {
