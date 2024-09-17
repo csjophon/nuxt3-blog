@@ -53,16 +53,14 @@ onMounted(async () => {
 </script>
 <template>
   <div class="shortList">
-    <div class="title text-8em color-transparent absolute left--3rem top--7.5rem font-bold text-stroke-2 op10">
-      Short
-    </div>
     <div class="shortList-body">
       <div class="item" v-for="item, index in posts" :key="index">
-        <div class="short-desc">
-          {{ item.desc }}
+        <div class="short-header">
+          <div class="short-header-title">{{ item.type }}</div>
+          <div class="short-header-time">{{ formatDate(item.date, 'diy', 'MMM D') }}</div>
         </div>
-        <div class="time">
-          - {{ formatDate(item.date, 'diy', 'MMM D') }}
+        <div class="short-content">
+          {{ item.desc }}
         </div>
       </div>
     </div>
@@ -72,51 +70,39 @@ onMounted(async () => {
 .shortList {
   position: relative;
   width: 100%;
-
-  .title {
-    color: var(--jory-color);
-    z-index: 999;
-  }
-
-  &-body {
-    display: flex;
-    flex-direction: row;
-    padding: 3rem 5rem 0;
-    // width: calc(60vw - 8rem);
-    overflow-x: auto;
-    /* 允许水平滚动 */
-    scrollbar-width: none;
-    /* 隐藏滚动条（仅适用于Firefox） */
-    -ms-overflow-style: none;
-    /* 隐藏滚动条（仅适用于IE/Edge） */
-  }
-
-  .item {
-    position: relative;
-    z-index: 1000;
-    min-width: 375px;
-    // background-color: var(--jory-bg);
-    color: var(--jory-color);
-    padding: 1rem 1.5rem;
-    border-radius: .5rem;
-    font-size: 15px;
-    // box-shadow: var(--jory-short-shadow);
-  }
-
-  .time {
-    width: 100%;
-    opacity: .6;
-    display: flex;
-    justify-content: end;
-    margin-top: .5rem;
-  }
-
+  height: 100%;
 }
 
+.shortList-body {
+  width: 100%;
+  height: 100%;
+  padding: 1rem; // 内边距
+  border-radius: .75rem; // 圆角
+  background: rgba(255, 255, 255, 0.5); // 半透明背景色
+  border: 1px solid rgba(255, 255, 255, 0.2); // 轻微的白色边框
+  backdrop-filter: blur(10px); // 添加模糊效果
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // 添加阴影效果
 
-/* 使用伪元素覆盖滚动条（适用于现代浏览器） */
-.shortList-body::-webkit-scrollbar {
-  display: none;
-  /* 隐藏滚动条（适用于Chrome、Safari等WebKit内核浏览器） */
+  .item {
+    width: 100%;
+    height: 100%;
+
+    .short-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: .5rem;
+      font-size: .6rem;
+    }
+
+    .short-content {
+      font-size: .9rem;
+      display: -webkit-box; // 使用弹性盒子布局
+      -webkit-box-orient: vertical; // 垂直排列
+      -webkit-line-clamp: 6; // 限制显示的行数
+      overflow: hidden; // 超出部分隐藏
+      text-overflow: ellipsis; // 用省略号表示超出部分
+    }
+  }
 }
 </style>

@@ -1,11 +1,5 @@
 <script lang="ts" setup>
 
-import links from '@/assets/links'
-
-const openInNewTab = (link: string) => {
-  window.open(link, '_blank');
-}
-
 </script>
 <template>
   <div class="layout-default">
@@ -16,12 +10,10 @@ const openInNewTab = (link: string) => {
       <div class="g-polygon-3"></div>
     </div>
 
-    <div class="main-container">
-      <div class="sidebar">
-        <SideBar></SideBar>
-      </div>
+    <div class="body">
+      <Navigation />
 
-      <main class="w-full pb-20">
+      <main class="w-full px-8 pb-20">
         <slot />
       </main>
 
@@ -34,4 +26,8 @@ const openInNewTab = (link: string) => {
     </div>
   </div>
 </template>
-<style lang="scss"></style>
+<style lang="scss">
+.layout-default {
+  position: relative;
+}
+</style>
