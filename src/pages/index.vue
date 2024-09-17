@@ -94,7 +94,7 @@ const openInNewTab = (link: string) => {
             </div>
           </div>
           <div class="projects-main">
-            <div class="project-item" @click="">
+            <div class="project-item" @click="openInNewTab('https://github.com/JoryJoestar/AIi18n')">
               <div class="project-item-header">
                 <div class="project-item-header-type">toC</div>
                 <UIcon class="project-item-header-route icon" name="i-icon-park-outline-double-right" dynamic />
@@ -133,7 +133,7 @@ const openInNewTab = (link: string) => {
 
 <style lang="scss" scoped>
 .home {
-  padding-top: 5rem;
+  padding-top:8rem;
 
   &-header {
 
@@ -236,7 +236,6 @@ const openInNewTab = (link: string) => {
 
             position: relative;
             cursor: pointer;
-            background: grey;
             width: calc(50% - 1rem);
             min-width: 12rem;
             min-height: 12rem;

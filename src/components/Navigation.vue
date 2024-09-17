@@ -43,7 +43,7 @@ const openRssFeed = () => {
   z-index: 1000;
   // left: 50%; // 设置左侧为50%
   // transform: translateX(-50%); // 向左移动自身宽度的一半以实现居中
-  transform: translateX(1rem);
+  transform: translateX(2rem);
   top: 1rem;
   display: flex; // 使用 Flexbox
   justify-content: center; // 水平居中
@@ -70,8 +70,8 @@ const openRssFeed = () => {
       margin: 0 .25rem;
 
       span {
-        width: 80%;
-        height: 80%;
+        width: 75%;
+        height: 75%;
         transition: all .1s ease-in-out;
       }
     }
