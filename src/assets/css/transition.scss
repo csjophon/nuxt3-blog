@@ -20,9 +20,26 @@
 }
 .fade-transform-enter {
   opacity: 0;
-  transform: translateY(-30px);
+  transform: translateX(-30px);
 }
 .fade-transform-leave-to {
   opacity: 0;
+  transform: translateX(30px);
+}
+
+// fade-move
+
+.fade-move-leave-active,
+.fade-move-enter-active {
+  transition: all 0.25s ease;
+}
+
+.fade-move-enter {
+  opacity: 100;
   transform: translateY(30px);
+}
+
+.fade-move-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
 }

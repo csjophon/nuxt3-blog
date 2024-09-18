@@ -133,7 +133,7 @@ const openInNewTab = (link: string) => {
 
 <style lang="scss" scoped>
 .home {
-  padding-top:8rem;
+  padding-top:5rem;
 
   &-header {
 

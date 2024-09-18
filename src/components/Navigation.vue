@@ -65,8 +65,8 @@ const openRssFeed = () => {
       justify-content: center; // 水平居中
       align-items: center; // 垂直居中
       cursor: pointer;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2rem;
+      height: 2rem;
       margin: 0 .25rem;
 
       span {
