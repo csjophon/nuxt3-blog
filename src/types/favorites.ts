@@ -7,7 +7,7 @@ type Favorite = {
 
 type Children = {
   children_type: string
-  favorites?: Favorite[]
+  favorites: Favorite[]
 }
 
 type Favorites = {
