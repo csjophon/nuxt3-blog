@@ -27,9 +27,6 @@ const openRssFeed = () => {
       <div class="nav-routes-item home" @click="router.push('/')">
         <UIcon class="project-item-header-route icon" name="i-ri-home-smile-fill" />
       </div>
-      <div class="nav-routes-item favorites" @click="router.push('/favorites')">
-        <UIcon class="project-item-header-route icon" name="i-uim-favorite" />
-      </div>
       <div class="nav-routes-item rss" @click="openRssFeed">
         <UIcon class="project-item-header-route icon" name="i-ri-rss-fill" />
       </div>

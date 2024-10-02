@@ -20,7 +20,7 @@ const extractChildRoutes = async (items: any) => {
 
   // 按照 date 字段倒序排列 posts 数组
   posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  posts.length = Math.min(posts.length, 1); // 保留前两个元素，若原本少于两个则不变
+  posts.length = Math.min(posts.length, 2); // 保留前两个元素，若原本少于两个则不变
 
   return posts;
 }
@@ -74,18 +74,20 @@ onMounted(async () => {
 }
 
 .shortList-body {
-  width: 100%;
-  height: 100%;
-  padding: 1rem; // 内边距
-  border-radius: .75rem; // 圆角
-  background: rgba(255, 255, 255, 0.5); // 半透明背景色
-  border: 1px solid rgba(255, 255, 255, 0.2); // 轻微的白色边框
-  backdrop-filter: blur(10px); // 添加模糊效果
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // 添加阴影效果
+  display: flex;
+  justify-content: space-between; // 项目之间的间距
+
 
   .item {
-    width: 100%;
-    height: 100%;
+    cursor: pointer;
+    width: calc(50% - 1rem);
+    height: 12rem;
+    padding: 1rem; // 内边距
+    border-radius: .75rem; // 圆角
+    background: rgba(255, 255, 255, 0.5); // 半透明背景色
+    border: 1px solid rgba(255, 255, 255, 0.2); // 轻微的白色边框
+    backdrop-filter: blur(10px); // 添加模糊效果
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // 添加阴影效果
 
     .short-header {
       display: flex;
