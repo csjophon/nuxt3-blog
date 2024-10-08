@@ -7,7 +7,7 @@
 
   <Body>
 
-    <NuxtLayout name="default">
+    <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
 

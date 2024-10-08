@@ -120,7 +120,7 @@ export default defineNuxtConfig({
 
     },
     navigation: {
-      fields: ['desc', 'date', 'subtitle', 'type', 'top', 'favorites', 'short']
+      fields: ['desc', 'date', 'subtitle', 'type', 'tags', 'top', 'reprint', 'lang']
     },
 
   },

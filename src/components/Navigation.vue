@@ -17,7 +17,7 @@ const switchTheme = () => {
 }
 
 const openRssFeed = () => {
-  window.location.href = '/rss.xml'
+  window.open('/rss.xml', '_blank')
 }
 
 </script>
@@ -26,6 +26,12 @@ const openRssFeed = () => {
     <div class="nav-routes">
       <div class="nav-routes-item home" @click="router.push('/')">
         <UIcon class="project-item-header-route icon" name="i-ri-home-smile-fill" />
+      </div>
+      <div class="nav-routes-item content" @click="router.push('/content')">
+        <UIcon class="project-item-header-route icon" name="i-ri-article-fill" />
+      </div>
+      <div class="nav-routes-item archive" @click="router.push('/archive')">
+        <UIcon class="project-item-header-route icon" name="i-ri-archive-2-fill" />
       </div>
       <div class="nav-routes-item rss" @click="openRssFeed">
         <UIcon class="project-item-header-route icon" name="i-ri-rss-fill" />
@@ -65,11 +71,12 @@ const openRssFeed = () => {
       width: 2rem;
       height: 2rem;
       margin: 0 .25rem;
+      color: rgba(0, 0, 0, .75);
 
       span {
         width: 75%;
         height: 75%;
-        transition: all .1s ease-in-out;
+        transition: all .2s ease-in-out;
       }
     }
 
@@ -77,7 +84,7 @@ const openRssFeed = () => {
       span {
         width: 100%;
         height: 100%;
-        color: grey;
+        color: rgba(0, 0, 0, 1);
       }
     }
   }

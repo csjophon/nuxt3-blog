@@ -1,45 +1,20 @@
-// See https://staging-cn.vuejs.org/guide/built-ins/transition.html for detail
-
-// fade
-.fade-enter-active {
-  transition: opacity 0.25s ease;
-}
-.fade-leave-active {
-  transition: opacity 0.2s ease;
+.pages-enter-active,
+.pages-leave-active {
+  transition: all 0.4s;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.pages-enter-from,
+.pages-leave-to {
   opacity: 0;
+  filter: blur(1rem);
 }
 
-// fade-transform
-.fade-transform-leave-active,
-.fade-transform-enter-active {
-  transition: all 0.25s ease;
-}
-.fade-transform-enter {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-.fade-transform-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
 
-// fade-move
-
-.fade-move-leave-active,
-.fade-move-enter-active {
-  transition: all 0.25s ease;
+.layouts-enter-active,
+.layouts-leave-active {
+  transition: all 0.4s;
 }
-
-.fade-move-enter {
-  opacity: 100;
-  transform: translateY(30px);
-}
-
-.fade-move-leave-to {
-  opacity: 0;
-  transform: translateY(-30px);
+.layouts-enter-from,
+.layouts-leave-to {
+  filter: grayscale(1);
 }

@@ -70,32 +70,17 @@ const openInNewTab = (link: string) => {
 
     <div class="home-main">
 
-      <div class="shorts">
-        <div class="shorts-header header-route">
-          <div class="shorts-header-title">
-            Shorts
-          </div>
-          <div class="shorts-header-route route-link" @click="router.push('/shorts')">
-            SEE ALL
-          </div>
-        </div>
-        <div class="shorts-main">
-          <ShortList></ShortList>
-        </div>
-      </div>
-
-
       <div class="articles">
         <div class="articles-header header-route">
           <div class="articles-header-title">
-            Articles
+            Content
           </div>
-          <div class="articles-header-title-route route-link" @click="router.push('/articles')">
+          <div class="articles-header-title-route route-link" @click="router.push('/content')">
             SEE ALL
           </div>
         </div>
         <div class="articles-main">
-          <BlogList></BlogList>
+          <ContentList></ContentList>
         </div>
       </div>
     </div>
@@ -185,13 +170,8 @@ const openInNewTab = (link: string) => {
       }
     }
 
-
-    .shorts {}
-
     .articles {
       padding-top: 1rem;
-
-      &-main {}
     }
   }
 }

@@ -49,13 +49,13 @@ onMounted(() => {
 
 </script>
 <template>
-  <div class="history relative">
+  <div class="content relative">
     <div class="title">
-      历史归档
+      Content
     </div>
-    <div class="history-body">
+    <div class="content-body">
 
-      <div class="history-body-list">
+      <div class="content-body-list">
         <div class="w-full" v-for="item, index in posts" :key="index">
 
           <div v-if="!isSameGroup(item, posts[index - 1])" select-none relative h20 pointer-events-none slide-enter
@@ -89,7 +89,7 @@ onMounted(() => {
   </div>
 </template>
 <style lang="scss">
-.history {
+.content {
 
   .title {
     color: var(--jory-color);
