@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 import { formatDate } from '@/utils/date';
+import type { ParsedContent } from '@nuxt/content';
 
 const router = useRouter();
 
 const props = defineProps<{
-  data: Content
+  data: ParsedContent
 }>()
 
 
 
 </script>
 <template>
-  <div class="diary" @click="router.push(props.data._path)">
+  <div class="diary" @click="router.push(props.data._path as string)">
     <div class="diary-info">
       <div class="diary-info-type">
         {{ props.data.type }}

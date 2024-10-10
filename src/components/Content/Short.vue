@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { formatDate } from '@/utils/date';
+import type { ParsedContent } from '@nuxt/content';
 
 const props = defineProps<{
-  data: Content
+  data: ParsedContent
 }>()
 
-const contentQuery = queryContent(props.data._path).findOne();
+const contentQuery = queryContent(props.data._path as string).findOne();
 
 const content = ref<string>();
 
@@ -20,7 +21,7 @@ onBeforeMount(() => {
 
 </script>
 <template>
-  <div class="short" @click="router.push(props.data._path)">
+  <div class="short" @click="router.push(props.data._path as string)">
     <div class="short-info">
       <div class="short-info-type">
         {{ props.data.type }}

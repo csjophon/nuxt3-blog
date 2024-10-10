@@ -1,37 +1,24 @@
 <script lang="ts" setup>
-import { formatDate } from '@/utils/date';
+import type { ParsedContent } from '@nuxt/content';
 
-const router = useRouter();
+const list = ref<ParsedContent[]>();
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const contentQuery = queryContent()
+  .where({ type: { $not: 'version' } })
+  .limit(10)
+  .find()
 
-const extractChildRoutes = async (items: any) => {
-  let posts: any = [];
+contentQuery.then((res) => {
+  list.value = res;
+  list.value.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  for (let item of items) {
-    if (!item.children) {
-      if (!(item.top || item.favorites)) {
-        posts.push(item);
-      }
-    } else {
-      const childRoutes = await extractChildRoutes(item.children);
-      posts = [...posts, ...childRoutes.posts];
-    }
-  }
-
-  // 按照 date 字段倒序排列 posts 数组
-  posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  posts.length = Math.min(posts.length, 10); // 保留前两个元素，若原本少于两个则不变
-
-  return { posts };
-}
-
-const list = await extractChildRoutes(navigation.value!);
+  console.log(list.value)
+})
 
 </script>
 <template>
   <div class="content-list">
-    <div v-for="item, index in list.posts" :key="index" class="content-list-item">
+    <div v-for="item, index in list" :key="index" class="content-list-item">
       <div class="content-list-item-article" v-if="item.type === 'article'">
         <ContentArticle :data="item"></ContentArticle>
       </div>

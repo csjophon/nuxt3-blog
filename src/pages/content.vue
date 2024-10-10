@@ -2,31 +2,21 @@
 
 import { formatDate } from '@/utils/date';
 
+import type { ParsedContent } from '@nuxt/content';
+
 const router = useRouter();
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const posts = ref<ParsedContent[]>();
 
-const extractChildRoutes = async (items: any) => {
-  let posts: any = [];
+const contentQuery = queryContent()
+  .where({ type: { $not: 'version' } })
+  .limit(10)
+  .find()
 
-  for (let item of items) {
-    if (!item.children) {
-      if (!item.top && !item.favorites && !item.short) {
-        posts.push(item);
-      }
-    } else {
-      const childRoutes = await extractChildRoutes(item.children);
-      posts = [...posts, ...childRoutes];
-    }
-  }
-
-  // 按照 date 字段倒序排列 posts 数组
-  posts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  return posts;
-}
-
-const posts = await extractChildRoutes(navigation.value!);
+contentQuery.then((res) => {
+  posts.value = res;
+  posts.value.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+})
 
 const getDate = (a: Date | string | number) => new Date(a).getDate()
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
@@ -50,9 +40,6 @@ onMounted(() => {
 </script>
 <template>
   <div class="content relative">
-    <div class="title">
-      Content
-    </div>
     <div class="content-body">
 
       <div class="content-body-list">
@@ -70,15 +57,17 @@ onMounted(() => {
 
           <div class="w-full slide-enter flex mb-2">
 
-            <div class="date" ws-nowrap
-              v-if="!isSameGroup(item, posts[index - 1]) || item.date && !isSameDate(item, posts[index - 1])">
+            <div class="date" ws-nowrap v-if="!isSameGroup(item, posts[index - 1]) || item.date">
               {{ formatDate(item.date, 'diy', 'MMM D') }}
             </div>
             <div v-else class="date placeholder"></div>
 
-            <div class="card cursor-pointer px-2" @click="router.push(item._path)">
-              <div class="card-title">
+            <div class="card cursor-pointer px-2" @click="router.push(item._path as string)">
+              <div class="card-title" v-if="item.type !== 'short'">
                 {{ item.title }}
+              </div>
+              <div class="card-title short" v-else>
+                {{ item.description }}
               </div>
             </div>
           </div>
@@ -88,8 +77,11 @@ onMounted(() => {
 
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
+
+  padding-top: 5rem;
+  width: 100%;
 
   .title {
     color: var(--jory-color);
@@ -100,13 +92,23 @@ onMounted(() => {
   }
 
   &-body-list {
+    width: 100%;
+
     .year {
       color: grey;
     }
 
     .card {
+      width: 100%;
       border-radius: .5rem;
       transition: all .3s;
+
+      .short {
+        width: 100%;
+        overflow: hidden; // 隐藏超出部分
+        white-space: nowrap; // 不换行
+        text-overflow: ellipsis; // 使用省略号表示超出部分
+      }
     }
 
     .card-title::after {

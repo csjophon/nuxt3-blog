@@ -15,9 +15,8 @@ export default defineEventHandler(async (event) => {
   const contentList = await serverQueryContent(event).find()
 
   const posts = contentList
-    .filter(doc => doc.short === false)
-  // .slice(0, 10)
-  // console.log(posts)
+
+  console.log(posts)
 
   for (const doc of posts) {
     feed.item({
