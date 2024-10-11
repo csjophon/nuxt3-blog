@@ -19,6 +19,17 @@ const carouselRef = ref()
 
 const carouselTimer = ref()
 
+const version = ref<string>('');
+
+const versionContentQuery = queryContent()
+  .where({ type: { $eq: 'version' } })
+  .findOne()
+
+versionContentQuery.then((res) => {
+  version.value = res.title as string;
+})
+
+
 
 onMounted(async () => {
   await nextTick();
@@ -53,7 +64,10 @@ const openInNewTab = (link: string) => {
     <div class="home-header">
       <div class="info">
         <img class="info-avatar" src="/avatar.jpeg" alt="">
-        <div class="info-name">Jory Joestar</div>
+        <div class="info-name">
+          Jory Joestar
+          <span @click="router.push('/version')">{{ version }}</span>
+        </div>
         <div class="info-desc">In life, when one is happy, one should enjoy to the fullest; do not let the golden cup
           face
           the moon empty.</div>
@@ -75,7 +89,7 @@ const openInNewTab = (link: string) => {
           <div class="articles-header-title">
             Content
           </div>
-          <div class="articles-header-title-route route-link" @click="router.push('/content')">
+          <div class="articles-header-title-route route-link" @click="router.push('/archive')">
             SEE ALL
           </div>
         </div>
@@ -107,6 +121,19 @@ const openInNewTab = (link: string) => {
 
       &-name {
         font-size: 4rem;
+
+        span {
+          font-size: 1rem;
+          border-bottom: 1px solid rgba(0, 0, 0, .5);
+          color: rgba(0, 0, 0, .5);
+          cursor: pointer;
+          transition: all .15s ease-in-out;
+        }
+
+        span:hover {
+          border-bottom: 1px solid rgba(0, 0, 0, .75);
+          color: rgba(0, 0, 0, .75);
+        }
       }
 
       &-desc {
