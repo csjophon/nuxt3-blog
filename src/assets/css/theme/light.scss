@@ -1,22 +1,27 @@
+@import "./variables.scss";
+
 html.light {
-  --jory-bg: #ffffff;
-  --jory-scrollbar: #eee;
-  --jory-scrollbar-hover: #bbb;
+  --background-color: var(--color-primary-white);
+  --background-color-50: var(--color-primary-white-50);
+  --background-color-hover: var(--color-natural-Ink30);
 
-  --jory-body-bg: #f6f7f8;
-  --jory-color: #000000;
+  --button-background-color: var(--color-primary-black);
+  --button-background-color-hover: var(--color-natural-Ink50);
+  --button-text-color: var(--color-natural-Ink10);
+  --button-text-color-hover: var(--color-natural-Ink50);
 
-  --jory-card-hover-bg: #eeeeee;
+  --font-color: var(--color-natural-Ink90);
+  --icon-color: var(--color-natural-Ink90);
 
-  --jory-button-bg: #1c1c1c;
-  --jory-button-hover-bg: rgb(73, 73, 73);
+  --prose-color-text-headline: var(--color-primary-black);
+  --prose-color-text-body: var(--color-natural-Ink90);
+  --prose-color-text-link: var(--color-info);
 
-  --jory-md-color: #555;
-  --jory-md-color-deep: #222;
-  --jory-md-color-deeper: #000;
+  --border-color: var(--color-natural-Ink90);
+  --border-l: 0.4rem solid var(--border-color);
+  --border-m: 0.25rem solid var(--border-color);
+  --border-s: 0.1rem solid var(--border-color);
 
-  --jory-body-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  --jory-short-shadow: rgba(149, 157, 165, 0.2) 0px 2px 8px 0px;
-
-  --code-inline: rgb(248, 250, 252);
+  --article-title-undeline-color: var(--color-natural-Ink30);
+  --article-title-undeline-color-hover: var(--color-success);
 }

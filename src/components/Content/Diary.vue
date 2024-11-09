@@ -13,14 +13,6 @@ const props = defineProps<{
 </script>
 <template>
   <div class="diary" @click="router.push(props.data._path as string)">
-    <div class="diary-info">
-      <div class="diary-info-type">
-        {{ props.data.type }}
-      </div>
-      <div class="diary-info-date">
-        {{ formatDate(props.data.date, 'diy', 'MMM D, YYYY') }}
-      </div>
-    </div>
     <div class="diary-title">
       <span>
         {{ props.data.title }}
@@ -34,18 +26,20 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .diary {
 
-  min-width: 24rem;
+  display: flex;
   cursor: pointer;
+  min-width: 24rem;
   width: 100%;
-  height: 12rem;
+  height: 100%;
   padding: 1rem; // 内边距
-  margin-bottom: 1rem;
-  border-radius: .75rem; // 圆角
-  background: rgba(255, 255, 255, 0.5); // 半透明背景色
-  border: 1px solid rgba(255, 255, 255, 0.2); // 轻微的白色边框
-  backdrop-filter: blur(10px); // 添加模糊效果
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // 添加阴影效果
+  flex: 1;
+  flex-grow: 1;
+  font-size: var(--typography-font-size-body1);
+  border: var(--border-m);
+  border-radius: var(--shape-border-radius-rounded-rectangle-l);
+  padding: 1.5rem 2rem;
   transition: all .3s ease;
+
 
   &-info {
     display: flex;

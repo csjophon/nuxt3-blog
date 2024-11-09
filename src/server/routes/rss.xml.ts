@@ -8,12 +8,15 @@ const SITE_URL = 'http://rwilds.top'
 // @ts-ignore
 export default defineEventHandler(async (event) => {
   const feed = new RSS({
-    title: "Jory Joestar's blog ",
+    title: "Rich Wilds's blog ",
     site_url: SITE_URL,
     feed_url: SITE_URL + '/rss.xml',
   })
 
-  const contentList = await serverQueryContent(event).find()
+  const contentList = await serverQueryContent(event)
+    .where({ type: { $not: 'version' } })
+    .where({ type: { $not: 'short' } })
+    .find();
 
   for (const doc of contentList) {
     const extractedContent = extractContent(doc.body);
@@ -23,7 +26,7 @@ export default defineEventHandler(async (event) => {
       url: `${SITE_URL}${doc._path}`,
       date: doc.date,
       description: doc.desc,
-      custom_elements: [{ "content:encoded": extractedContent }],
+      custom_elements: [{ "content": extractedContent }],
     })
   }
   event.res.setHeader('content-type', 'text/xml')

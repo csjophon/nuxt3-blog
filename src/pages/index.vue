@@ -7,10 +7,10 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Jory Joestar',
-  ogTitle: 'Jory Joestar',
-  description: 'Jory Joestar',
-  ogDescription: 'Jory Joestar',
+  title: 'Rich Wilds',
+  ogTitle: 'Rich Wilds',
+  description: 'Rich Wilds',
+  ogDescription: 'Rich Wilds',
   ogImage: '',
 })
 
@@ -62,37 +62,28 @@ const openInNewTab = (link: string) => {
 <template>
   <div class="home">
     <div class="home-header">
-      <div class="info">
-        <img class="info-avatar" src="/avatar.jpeg" alt="">
-        <div class="info-name">
-          Jory Joestar
-          <span @click="router.push('/version')">{{ version }}</span>
+      <div class="intro">
+        <div class="intro-first">
+          <img class="intro-avatar" src="/avatar.jpeg" alt="">
+          <div class="intro-name">Rich Wilds</div>
+          <div class="intro-version" @click="router.push('/version')">{{ version }}</div>
         </div>
-        <div class="info-desc">In life, when one is happy, one should enjoy to the fullest; do not let the golden cup
-          face
-          the moon empty.</div>
-        <div class="info-links">
-          <div class="info-links-item" @click="openInNewTab('https://github.com/JoryJoestar')">
-            <UIcon class="icon" name="i-ri-github-fill" dynamic />
+        <div class="intro-second">
+          <div class="intro-links">
+            <div class="intro-links-item" @click="openInNewTab('https://github.com/JoryJoestar')">
+              <UIcon class="icon" name="i-ri-github-fill" dynamic />
+            </div>
           </div>
+          <div class="intro-desc">In life, when one is happy, one should enjoy to the fullest; do not let the golden cup
+            face
+            the moon empty.</div>
         </div>
-      </div>
-      <div class="ani">
-
       </div>
     </div>
 
     <div class="home-main">
 
       <div class="articles">
-        <div class="articles-header header-route">
-          <div class="articles-header-title">
-            Content
-          </div>
-          <div class="articles-header-title-route route-link" @click="router.push('/archive')">
-            SEE ALL
-          </div>
-        </div>
         <div class="articles-main">
           <ContentList></ContentList>
         </div>
@@ -106,56 +97,92 @@ const openInNewTab = (link: string) => {
 
 <style lang="scss" scoped>
 .home {
-  padding-top: 5rem;
+  padding-top: 8rem;
 
   &-header {
 
-    .info {
-      width: 32rem;
+    .intro {
+
+      &-first,
+      &-second {
+        display: flex;
+        align-items: stretch; // 确保子元素可以拉伸以填满父元素的高度
+        gap: 1rem;
+
+        margin-bottom: 1rem;
+      }
 
       &-avatar {
-        border-radius: 50%;
-        width: 8rem;
-        height: 8rem;
+        border-radius: var(--shape-border-radius-circle);
+        width: 10rem;
+        height: 10rem;
+        border: var(--border-m);
       }
 
       &-name {
-        font-size: 4rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex: 1;
+        flex-grow: 1;
+        min-height: 10rem;
+        font-size: var(--typography-font-size-headline2);
+        border: var(--border-m);
+        border-radius: var(--shape-border-radius-rounded-rectangle-l);
+        padding: var(--card-padding-m);
+      }
 
-        span {
-          font-size: 1rem;
-          border-bottom: 1px solid rgba(0, 0, 0, .5);
-          color: rgba(0, 0, 0, .5);
-          cursor: pointer;
-          transition: all .15s ease-in-out;
-        }
+      &-version {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 10rem;
+        min-height: 10rem;
+        font-size: var(--typography-font-size-headline4);
+        border: var(--border-m);
+        border-radius: var(--shape-border-radius-rounded-rectangle-l);
+        padding: var(--card-padding-m);
+        color: var(--font-color);
+        text-decoration: underline;
+        cursor: pointer;
+        transition: all .15s ease-in-out;
+      }
 
-        span:hover {
-          border-bottom: 1px solid rgba(0, 0, 0, .75);
-          color: rgba(0, 0, 0, .75);
-        }
+      &-version:hover {
+        background-color: var(--background-color-hover);
       }
 
       &-desc {
-        font-size: 1rem;
-        padding-top: 1rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex: 1;
+        flex-grow: 1;
+        font-size: var(--typography-font-size-body1);
+        border: var(--border-m);
+        border-radius: var(--shape-border-radius-rounded-rectangle-l);
+        padding: 1.5rem 2rem;
       }
 
       &-links {
         display: flex;
-        padding-top: 1rem;
 
         &-item {
-          width: 2rem;
-          height: 2rem;
-          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
+          min-width: 10rem;
+          font-size: var(--typography-font-size-headline4);
+          border: var(--border-m);
+          border-radius: var(--shape-border-radius-rounded-rectangle-l);
+          padding: 1rem 2rem;
+          cursor: pointer;
+          color: var(--font-color);
+          transition: all .15s ease-in-out;
 
           .icon {
-            width: 80%;
-            height: 80%;
+            width: 3rem;
+            height: 3rem;
             transition: all .2s ease-in-out;
           }
 
@@ -168,37 +195,9 @@ const openInNewTab = (link: string) => {
         }
 
         &-item:hover {
-          .icon {
-            color: grey;
-          }
+          background-color: var(--background-color-hover);
         }
       }
-    }
-  }
-
-  &-main {
-    padding-top: 1rem;
-    width: 100%;
-
-    .header-route {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: .5rem;
-      font-size: 13px;
-      color: grey;
-
-      .route-link {
-        cursor: pointer;
-        transition: all .2s ease-in-out;
-      }
-
-      .route-link:hover {
-        color: rgb(63, 63, 63);
-      }
-    }
-
-    .articles {
-      padding-top: 1rem;
     }
   }
 }

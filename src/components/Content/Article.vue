@@ -13,14 +13,6 @@ const props = defineProps<{
 </script>
 <template>
   <div class="article" @click="router.push(props.data._path as string)">
-    <div class="article-info">
-      <div class="article-info-type">
-        {{ props.data.type }}
-      </div>
-      <div class="article-info-date">
-        {{ formatDate(props.data.date, 'diy', 'MMM D, YYYY') }}
-      </div>
-    </div>
     <div class="article-title">
       <span>
         {{ props.data.title }}
@@ -34,34 +26,24 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .article {
 
-  min-width: 24rem;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
+  min-width: 24rem;
   width: 100%;
-  height: 12rem;
+  height: 100%;
   padding: 1rem; // 内边距
-  margin-bottom: 1rem;
-  border-radius: .75rem; // 圆角
-  background: rgba(255, 255, 255, 0.5); // 半透明背景色
-  border: 1px solid rgba(255, 255, 255, 0.2); // 轻微的白色边框
-  backdrop-filter: blur(10px); // 添加模糊效果
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // 添加阴影效果
+  flex: 1;
+  flex-grow: 1;
+  font-size: var(--typography-font-size-body1);
+  border: var(--border-m);
+  border-radius: var(--shape-border-radius-rounded-rectangle-l);
+  padding: 1.5rem 2rem;
   transition: all .3s ease;
 
-  &-info {
-    display: flex;
-    font-size: .8rem;
-    color: rgb(70, 70, 70);
-    margin-bottom: .5rem;
-
-    &-type {
-      text-transform: capitalize;
-      margin-right: .5rem;
-    }
-  }
-
   &-title {
-    font-size: 1.25rem;
-    margin-bottom: .5rem;
+    font-size: var(--typography-font-size-headline4);
+    margin-bottom: 1rem;
 
     span {
       position: relative; // 确保伪元素相对于标题定位
@@ -70,7 +52,7 @@ const props = defineProps<{
   }
 
   &-desc {
-    font-size: .9rem;
+    font-size: var(--typography-font-size-body2);
     display: -webkit-box; // 使用弹性盒子布局
     -webkit-box-orient: vertical; // 垂直排列
     -webkit-line-clamp: 3; // 限制显示的行数
@@ -81,23 +63,23 @@ const props = defineProps<{
 
 
   &:hover {
-    background: rgba(255, 255, 255, 1); // 半透明背景色
+    background-color: var(--background-color-hover);
   }
 
   .article-title span::after {
     position: absolute; // 绝对定位
     display: block;
     content: "";
-    width: 1rem;
-    height: .25rem;
+    width: 2rem;
+    height: .5rem;
     border-radius: .5rem;
-    background-color: rgb(182, 182, 182);
+    background-color: var(--article-title-undeline-color);
     transition: all .3s ease-in-out;
   }
 
   &:hover .article-title span::after {
     width: 100%;
-    background-color: var(--jory-color);
+    background-color: var(--article-title-undeline-color-hover);
   }
 }
 </style>

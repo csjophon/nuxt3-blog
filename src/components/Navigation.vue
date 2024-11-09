@@ -44,16 +44,15 @@ const openRssFeed = () => {
   // left: 50%; // 设置左侧为50%
   // transform: translateX(-50%); // 向左移动自身宽度的一半以实现居中
   transform: translateX(2rem);
-  top: 1rem;
+  top: 4rem;
   display: flex; // 使用 Flexbox
   justify-content: center; // 水平居中
-  padding: .25rem; // 内边距
-  margin-bottom: 1rem;
-  border-radius: .75rem; // 圆角
-  background: rgba(255, 255, 255, 0.5); // 半透明背景色
-  border: 1px solid rgba(255, 255, 255, 0.2); // 轻微的白色边框
-  backdrop-filter: blur(10px); // 添加模糊效果
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // 添加阴影效果
+  padding: var(--spacing-xxs); // 内边距
+  border-radius: var(--shape-border-radius-rounded-rectangle-l); // 圆角
+  background-color: var(--background-color-50);
+  border: var(--border-m);
+  backdrop-filter: blur(.75rem); // 添加模糊效果
+  box-shadow: var(--shadow-s); // 添加阴影效果
 
   &-routes {
     display: flex; // 使用 Flexbox
@@ -71,8 +70,8 @@ const openRssFeed = () => {
       color: rgba(0, 0, 0, .75);
 
       span {
-        width: 75%;
-        height: 75%;
+        width: 90%;
+        height: 90%;
         transition: all .2s ease-in-out;
       }
     }

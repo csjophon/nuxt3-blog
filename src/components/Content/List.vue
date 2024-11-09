@@ -35,14 +35,7 @@ contentQuery.then((res) => {
 .content-list {
 
   display: flex;
-  flex-wrap: wrap; // 允许换行
-  justify-content: space-between; // 项目之间的间距
-
-  &-item {
-    width: calc(50% - 1rem);
-
-  }
-
-
+  flex-direction: column;
+  gap: .5rem;
 }
 </style>

@@ -1,0 +1,72 @@
+html {
+  --color-primary-black: rgba(18, 18, 18, 1);
+  --color-primary-black-50: rgba(18, 18, 18, 0.5);
+  --color-primary-white: rgba(252, 252, 252, 1);
+  --color-primary-white-50: rgba(252, 252, 252, 0.5);
+
+  --color-secondary-Ink80: rgba(73, 73, 73, 1);
+  --color-secondary-Ink60: rgba(120, 120, 120, 1);
+  --color-secondary-Ink40: rgba(209, 209, 209, 1);
+
+  --color-natural-Ink90: rgba(52, 52, 52, 1);
+  --color-natural-Ink70: rgba(97, 97, 97, 1);
+  --color-natural-Ink50: rgba(142, 142, 142, 1);
+  --color-natural-Ink30: rgba(231, 231, 231, 1);
+  --color-natural-Ink20: rgba(249, 249, 249, 1);
+  --color-natural-Ink10: rgba(249, 249, 251, 1);
+
+  --color-success: rgba(28, 208, 105, 1);
+  --color-success-light: rgba(198, 243, 217, 1);
+  --color-danger: rgba(255, 0, 0, 1);
+  --color-danger-light: rgba(255, 191, 191, 1);
+  --color-info: rgba(74, 179, 244, 1);
+  --color-info-light: rgba(209, 236, 252, 1);
+  --color-warning: rgba(255, 229, 0, 1);
+  --color-warning-light: rgba(248, 245, 213, 1);
+
+  --color-text-black: rgba(18, 18, 18, 1);
+  --color-text-Ink80: rgba(73, 73, 73, 1);
+  --color-text-Ink60: rgba(120, 120, 120, 1);
+  --color-text-Ink40: rgba(209, 209, 209, 1);
+  --color-text-white: rgba(252, 252, 252, 1);
+
+  --shape-border-radius-circle: 50%;
+  --shape-border-radius-phille: 2.5rem;
+  --shape-border-radius-rounded-rectangle-l: 1rem;
+  --shape-border-radius-rounded-rectangle-m: 0.75rem;
+  --shape-border-radius-rounded-rectangle-s: 0.5rem;
+
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-s: 1rem;
+  --spacing-m: 1.5rem;
+  --spacing-l: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+
+  --typography-font-family: "Noto Sans", sans-serif;
+  --typography-font-size-headline1: 5rem;
+  --typography-font-size-headline2: 4rem;
+  --typography-font-size-headline3: 3rem;
+  --typography-font-size-headline4: 2rem;
+
+  --typography-font-size-body1: 1.5rem;
+  --typography-font-size-body2: 1.25rem;
+  --typography-font-size-body3: 0.95rem;
+
+  --typography-font-size-caption1: 1.1rem;
+  --typography-font-size-caption2: 0.9rem;
+  --typography-font-size-caption3: 0.81rem;
+  --typography-font-size-caption4: 0.75rem;
+  --typography-font-size-caption5: 0.5rem;
+
+  --typography-font-weight-bold: 700;
+  --typography-font-weight-regular: 400;
+  --typography-font-weight-light: 300;
+
+  --shadow-l: 0px 18px 28px 0px rgba(0, 0, 0, 0.08);
+  --shadow-m: 0px 8px 18px 0px rgba(0, 0, 0, 0.06);
+  --shadow-s: 0px 3px 6px 0px rgba(0, 0, 0, 0.04);
+
+  --card-padding-m: 0 var(--spacing-l);
+}

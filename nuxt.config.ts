@@ -21,13 +21,13 @@ export default defineNuxtConfig({
       meta: [
         { hid: 'google-site-verification', name: "google-site-verification", content: "v_LHAQrxt7BUZUApQHG4mpecWI1y6hakdu6L6NAdw3k" }
       ],
-      title: 'Jory Joestar',
+      title: 'Rich Wilds',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'alternate',
           type: 'application/rss+xml',
-          title: 'Jory Joestar\' blog',
+          title: 'Rich Wilds\' blog',
           href: '/rss.xml'
         }
       ],
@@ -135,7 +135,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/css/variables.scss";'
+          additionalData: '@import "@/assets/css/theme/variables.scss";'
         }
       }
     },

@@ -1,4 +1,4 @@
-# Jory Joestar's blog
+# Rich Wilds's blog
 
 share life & love
 
