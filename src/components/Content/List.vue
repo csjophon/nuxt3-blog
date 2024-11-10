@@ -36,6 +36,6 @@ contentQuery.then((res) => {
 
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 1rem;
 }
 </style>

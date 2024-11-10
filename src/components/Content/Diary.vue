@@ -40,7 +40,6 @@ const props = defineProps<{
   padding: 1.5rem 2rem;
   transition: all .3s ease;
 
-
   &-info {
     display: flex;
     font-size: .8rem;
