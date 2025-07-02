@@ -4,23 +4,15 @@
 //theme
 @import "./theme/light.scss";
 @import "./theme/dark.scss";
-
-// transition
 @import "./transition.scss";
-
-// scrollbar
 @import "./scrollbar.scss";
-// viewTransition
 @import "./viewTransition.scss";
-// noprogress
 @import "./nprogress.scss";
 
-// blog
+// page
+@import "./layout.scss";
 @import "./prose.scss";
 @import "./markdown.scss";
-
-// layout
-@import "./layout.scss";
 
 html {
   overflow-y: scroll;

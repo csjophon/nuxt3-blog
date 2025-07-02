@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === 'development'
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  ssr: true,
+  ssr: false,
 
   devtools: { enabled: true },
 
@@ -21,13 +21,13 @@ export default defineNuxtConfig({
       meta: [
         { hid: 'google-site-verification', name: "google-site-verification", content: "v_LHAQrxt7BUZUApQHG4mpecWI1y6hakdu6L6NAdw3k" }
       ],
-      title: 'Rich Wilds',
+      title: 'Jophon',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'alternate',
           type: 'application/rss+xml',
-          title: 'Rich Wilds\' blog',
+          title: 'Jophon\' blog',
           href: '/rss.xml'
         }
       ],

@@ -24,66 +24,97 @@ const openRssFeed = () => {
 <template>
   <nav class="nav">
     <div class="nav-routes">
-      <div class="nav-routes-item home" @click="router.push('/')">
-        <UIcon class="project-item-header-route icon" name="i-ri-home-smile-fill" />
+      <div class="nav-routes-left">
+        <img class="nav-routes-left-avatar" src="/avatar.jpeg" alt="">
+        <div class="nav-routes-left-item" @click="router.push('/')">
+          Jophon
+        </div>
       </div>
-      <div class="nav-routes-item archive" @click="router.push('/archive')">
-        <UIcon class="project-item-header-route icon" name="i-ri-archive-2-fill" />
-      </div>
-      <div class="nav-routes-item rss" @click="openRssFeed">
-        <UIcon class="project-item-header-route icon" name="i-ri-rss-fill" />
+      <div class="nav-routes-center"></div>
+      <div class="nav-routes-right">
+        <div class="nav-routes-right-item" @click="router.push('/archive')">
+          <UIcon class="project-item-header-route icon" name="i-ri-archive-2-fill" />
+        </div>
+        <div class="nav-routes-right-item" @click="openRssFeed">
+          <UIcon class="project-item-header-route icon" name="i-ri-rss-fill" />
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .nav {
   position: fixed;
   z-index: 1000;
-  // left: 50%; // 设置左侧为50%
-  // transform: translateX(-50%); // 向左移动自身宽度的一半以实现居中
-  transform: translateX(2rem);
-  top: 4rem;
   display: flex; // 使用 Flexbox
+  width: 100vw; // 宽度占满全屏
+  height: 4rem;
   justify-content: center; // 水平居中
-  padding: var(--spacing-xxs); // 内边距
-  border-radius: var(--shape-border-radius-rounded-rectangle-l); // 圆角
-  background-color: var(--background-color-50);
-  border: var(--border-m);
+  padding: var(--spacing-m); // 内边距
   backdrop-filter: blur(.75rem); // 添加模糊效果
-  box-shadow: var(--shadow-s); // 添加阴影效果
 
   &-routes {
+    width: 100%; // 宽度占满全屏
     display: flex; // 使用 Flexbox
-    justify-content: center; // 水平居中
-    align-items: center; // 垂直居中
+    justify-content: space-between;
 
-    &-item {
+    &-left {
       display: flex; // 使用 Flexbox
       justify-content: center; // 水平居中
       align-items: center; // 垂直居中
-      cursor: pointer;
-      width: 2rem;
-      height: 2rem;
-      margin: 0 .25rem;
-      color: rgba(0, 0, 0, .75);
+      margin-right: auto; // 左侧导航项靠左对齐
 
-      span {
-        width: 90%;
-        height: 90%;
-        transition: all .2s ease-in-out;
+      &-avatar {
+        border-radius: var(--shape-border-radius-circle);
+        width: 2rem;
+        height: 2rem;
+        border: var(--border-s);
+        margin-right: .5rem;
+      }
+
+      &-item {
+        display: flex; // 使用 Flexbox
+        justify-content: center; // 水平居中
+        align-items: center; // 垂直居中
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: rgba(0, 0, 0, .75);
+
       }
     }
 
-    &-item:hover {
-      span {
-        width: 100%;
-        height: 100%;
-        color: rgba(0, 0, 0, 1);
+    &-right {
+      display: flex; // 使用 Flexbox
+      justify-content: center; // 水平居中
+      align-items: center; // 垂直居中
+      margin-left: auto; // 右侧导航项靠右对齐
+
+      &-item {
+        display: flex; // 使用 Flexbox
+        justify-content: center; // 水平居中
+        align-items: center; // 垂直居中
+        cursor: pointer;
+        width: 1.75rem;
+        height: 1.75rem;
+        margin: 0 .75rem;
+        color: rgba(0, 0, 0, .75);
+
+        span {
+          width: 90%;
+          height: 90%;
+          transition: all .15s ease-in-out;
+        }
+      }
+
+      &-item:hover {
+        span {
+          width: 100%;
+          height: 100%;
+          color: rgba(0, 0, 0, 1);
+        }
       }
     }
   }
-
 }
 </style>

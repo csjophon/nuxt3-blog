@@ -36,13 +36,14 @@ const props = defineProps<{
   flex: 1;
   flex-grow: 1;
   font-size: var(--typography-font-size-body1);
-  border: var(--border-m);
+  box-shadow: var(--shadow-s);
+  border: 1px solid var(--color-natural-Ink20);
   border-radius: var(--shape-border-radius-rounded-rectangle-l);
   padding: 1.5rem 2rem;
   transition: all .3s ease;
 
   &-title {
-    font-size: var(--typography-font-size-headline4);
+    font-size: var(--typography-font-size-headline5);
     margin-bottom: 1rem;
 
     span {
@@ -52,7 +53,7 @@ const props = defineProps<{
   }
 
   &-desc {
-    font-size: var(--typography-font-size-body2);
+    font-size: var(--typography-font-size-body3);
     display: -webkit-box; // 使用弹性盒子布局
     -webkit-box-orient: vertical; // 垂直排列
     -webkit-line-clamp: 3; // 限制显示的行数
@@ -71,7 +72,7 @@ const props = defineProps<{
     display: block;
     content: "";
     width: 2rem;
-    height: .5rem;
+    height: .3rem;
     border-radius: .5rem;
     background-color: var(--article-title-undeline-color);
     transition: all .3s ease-in-out;

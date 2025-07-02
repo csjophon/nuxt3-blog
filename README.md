@@ -1,4 +1,4 @@
-# Rich Wilds's blog
+# Jophon's blog
 
 share life & love
 

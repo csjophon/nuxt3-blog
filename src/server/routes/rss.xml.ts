@@ -8,7 +8,7 @@ const SITE_URL = 'http://rwilds.top'
 // @ts-ignore
 export default defineEventHandler(async (event) => {
   const feed = new RSS({
-    title: "Rich Wilds's blog ",
+    title: "Jophon's blog ",
     site_url: SITE_URL,
     feed_url: SITE_URL + '/rss.xml',
   })
