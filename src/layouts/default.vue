@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <div class="layout-default">
+  <div class="default-layout">
     <Navigation />
     <div class="body">
       <slot />

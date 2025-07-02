@@ -6,8 +6,11 @@ const layout = 'default'
   <Html>
 
   <Body>
-    <NuxtLayout :name="layout">
-    </NuxtLayout>
+    <div>
+      <NuxtLayout :name="layout">
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
   </Body>
 
   </Html>
