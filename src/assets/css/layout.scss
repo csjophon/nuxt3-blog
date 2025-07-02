@@ -1,4 +1,4 @@
-.body {
+.layout-default-body {
   max-width: 1080px;
   min-width: 375px;
   box-sizing: content-box;
@@ -8,7 +8,7 @@
   position: relative;
 }
 
-.footer {
+.layout-default-footer {
   position: absolute;
   display: flex;
   justify-content: center;

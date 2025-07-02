@@ -6,11 +6,7 @@
   <Html>
 
   <Body>
-
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-
+    <NuxtPage />
   </Body>
 
   </Html>

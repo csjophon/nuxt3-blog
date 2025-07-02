@@ -12,7 +12,7 @@ contentQuery.then((res) => {
   list.value = res;
   list.value.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  console.log(list.value)
+  // console.log(list.value)
 })
 
 </script>
