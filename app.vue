@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-
+const layout = 'default'
 
 </script>
 <template>
   <Html>
 
   <Body>
-    <NuxtPage />
+    <NuxtLayout :name="layout">
+    </NuxtLayout>
   </Body>
 
   </Html>
