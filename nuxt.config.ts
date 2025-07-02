@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === 'development'
 export default defineNuxtConfig({
   srcDir: 'src',
 
-  ssr: false,
+  ssr: true,
 
   devtools: { enabled: true },
 
