@@ -33,10 +33,10 @@ const openRssFeed = () => {
       <div class="nav-routes-center"></div>
       <div class="nav-routes-right">
         <div class="nav-routes-right-item" @click="router.push('/archive')">
-          <UIcon class="project-item-header-route icon" name="i-ri-archive-2-fill" />
+          <Icon name="material-symbols:archive"  />
         </div>
         <div class="nav-routes-right-item" @click="openRssFeed">
-          <UIcon class="project-item-header-route icon" name="i-ri-rss-fill" />
+          <Icon name="material-symbols:rss-feed" />
         </div>
       </div>
     </div>

@@ -37,41 +37,33 @@ export default defineNuxtConfig({
 
   css: ['@/assets/css/index.scss'],
 
-  modules: [
-    '@pinia/nuxt',
-    '@nuxtjs/color-mode',
-    '@nuxt/content',
-    'nuxt-icon',
-    '@unocss/nuxt',
-    '@nuxt/ui',
-    ['@nuxtjs/i18n', {
-      vueI18n: './i18n.config.ts',
-      // baseUrl:'',
-      strategy: 'no_prefix',
-      defaultLocale: 'en',
+  modules: ['@nuxt/icon', '@pinia/nuxt', '@nuxtjs/color-mode', '@nuxt/content', '@unocss/nuxt', '@nuxt/ui', ['@nuxtjs/i18n', {
+    vueI18n: './i18n.config.ts',
+    // baseUrl:'',
+    strategy: 'no_prefix',
+    defaultLocale: 'en',
 
-      // lazy: true,
-      // langDir: 'assets/lang',
-      locales: [
-        {
-          code: 'en',
-          iso: 'en-US',
-          name: 'English(US)',
-          // file: 'en_us/lazy.ts'
-        },
-        {
-          code: 'zh',
-          iso: 'zh-Hans',
-          name: '简体中文',
-          // file: 'zh_cn/lazy.ts'
-        }
-      ],
-      detectBrowserLanguage: {
-        useCookie: true,
-        cookieKey: 'lang'
+    // lazy: true,
+    // langDir: 'assets/lang',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English(US)',
+        // file: 'en_us/lazy.ts'
+      },
+      {
+        code: 'zh',
+        iso: 'zh-Hans',
+        name: '简体中文',
+        // file: 'zh_cn/lazy.ts'
       }
-    }],
-  ],
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'lang'
+    }
+  }], '@nuxt/icon'],
 
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
