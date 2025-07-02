@@ -15,7 +15,6 @@ export default defineEventHandler(async (event) => {
 
   const contentList = await serverQueryContent(event)
     .where({ type: { $not: 'version' } })
-    .where({ type: { $not: 'short' } })
     .find();
 
   for (const doc of contentList) {

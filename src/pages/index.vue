@@ -12,7 +12,7 @@ useSeoMeta({
 
 <template>
   <div class="home">
-    <Navigation />
+    
     <div class="home-main">
       <div class="articles">
         <div class="articles-main">

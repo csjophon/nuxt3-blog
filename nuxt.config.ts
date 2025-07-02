@@ -16,7 +16,6 @@ export default defineNuxtConfig({
 
   app: {
     pageTransition: { name: 'pages', mode: 'out-in' },
-    layoutTransition: { name: 'layouts', mode: 'out-in' },
     head: {
       meta: [
         { hid: 'google-site-verification', name: "google-site-verification", content: "v_LHAQrxt7BUZUApQHG4mpecWI1y6hakdu6L6NAdw3k" }
