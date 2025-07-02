@@ -100,7 +100,7 @@ const openRssFeed = () => {
         margin: 0 .75rem;
         color: rgba(0, 0, 0, .75);
 
-        span {
+        svg, span{
           width: 90%;
           height: 90%;
           transition: all .15s ease-in-out;
@@ -108,7 +108,7 @@ const openRssFeed = () => {
       }
 
       &-item:hover {
-        span {
+        svg, span{
           width: 100%;
           height: 100%;
           color: rgba(0, 0, 0, 1);
