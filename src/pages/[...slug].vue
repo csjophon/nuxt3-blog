@@ -6,6 +6,12 @@ const content = useContent()
 
 // console.log(content)
 
+const router = useRouter();
+
+const back = () => {
+  router.back()
+}
+
 onMounted(async () => {
   await nextTick();
 
@@ -37,6 +43,13 @@ const openInNewTab = (link: string) => {
       </div>
     </ContentDoc>
 
+    <div class="back">
+      <Icon name="material-symbols:arrow-forward-ios-rounded"></Icon>
+      &nbsp;
+      <button @click="back">
+        cd&nbsp;&nbsp;..
+      </button>
+    </div>
     <div class="toc">
       <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
       <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
@@ -53,17 +66,13 @@ const openInNewTab = (link: string) => {
 
 <style lang="scss">
 .blog {
-  display: flex;
 
   .prose {
     flex: 1;
     flex-grow: 1;
-    max-width: calc(100% - 12rem);
-    margin-left: 12rem;
+    max-width: calc(100%);
 
     &-header {
-      border: var(--border-m);
-      border-radius: var(--shape-border-radius-rounded-rectangle-l);
       padding: 1.5rem 2rem;
     }
 
@@ -81,26 +90,44 @@ const openInNewTab = (link: string) => {
     }
 
     &-desc {
-      border: var(--border-m);
-      border-radius: var(--shape-border-radius-rounded-rectangle-l);
       padding: 1rem 1.5rem;
       background-color: var(--prose-desc-background);
     }
 
     &-content {
-      border: var(--border-m);
-      border-radius: var(--shape-border-radius-rounded-rectangle-l);
       padding: 1.5rem 2rem;
     }
   }
 
+  .back {
+    padding: 1.5rem 2rem;
+    
+    svg,
+    span {
+      width: .75rem;
+      height: .75rem;
+      color: var(--color-natural-Ink50);
+    }
+
+    button {
+      font-weight: inherit;
+      text-decoration: none;
+      color: var(--color-natural-Ink50);
+      border-bottom: 1px solid var(--color-natural-Ink30);
+      transition: border .3s ease-in-out;
+    }
+
+    button:hover {
+      color: var(--color-natural-Ink70);
+      border-bottom: 1px solid var(--color-natural-Ink70);
+    }
+  }
+
   .toc {
-    border: var(--border-m);
-    border-radius: var(--shape-border-radius-rounded-rectangle-l);
-    background-color: var(--prose-desc-background);
     position: fixed;
     z-index: 1000;
     top: 8rem;
+    left: 12rem;
     width: 10rem;
     color: var(--font-color);
 

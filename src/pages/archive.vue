@@ -84,7 +84,6 @@ onMounted(() => {
   width: 100%;
 
   .title {
-    color: var(--jory-color);
     font-size: 2.5rem;
     font-weight: bold;
     opacity: .25;
@@ -115,30 +114,27 @@ onMounted(() => {
       display: block;
       content: " ";
       width: 1rem;
-      height: .25rem;
+      height: .15rem;
       border-radius: .5rem;
-      background-color: var(--jory-color);
+      background-color: var(--article-title-undeline-color);
       transition: all .3s;
     }
 
     .card:hover .card-title::after {
       width: 100%;
-      background-color: rgb(22, 192, 22);
+      background-color: var(--article-title-undeline-color-hover);
     }
 
     .card-title {
-      color: var(--jory-color);
       font-size: 1rem;
-      font-weight: 600;
       line-height: 2rem;
     }
 
     .date {
       line-height: 2rem;
       min-width: 4rem;
-      font-size: 1rem;
-      color: var(--jory-color);
-    }
+      font-size: .75rem;
+    } 
   }
 }
 </style>

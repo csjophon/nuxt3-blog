@@ -2,9 +2,31 @@
 
 const colorMode = useColorMode()
 const router = useRouter();
+const route = useRoute();
+
+// 监听滚动事件
+const handleScroll = () => {
+  const scrollTop = document.documentElement.scrollTop
+  showToTop.value = scrollTop > 128
+}
+
+const showToTop = ref<boolean>(false)
+
+const toTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 
 onMounted(() => {
+  document.addEventListener('scroll', handleScroll);
   currentThemeIndex.value = themeList.indexOf(colorMode.preference);
+})
+
+// 取消滚动事件
+onUnmounted(() => {
+  document.removeEventListener('scroll', handleScroll)
 })
 
 const themeList = ['dark', 'light']
@@ -30,14 +52,18 @@ const openRssFeed = () => {
           Jophon
         </div>
       </div>
-      <div class="nav-routes-center"></div>
+      <div class="nav-routes-center">
+        <button :class="{ displaynone: !showToTop }" @click="toTop" class="totop">
+          <Icon name="material-symbols:vertical-align-top-rounded" />
+        </button>
+      </div>
       <div class="nav-routes-right">
-        <div class="nav-routes-right-item" @click="router.push('/archive')">
-          <Icon name="material-symbols:archive"  />
-        </div>
-        <div class="nav-routes-right-item" @click="openRssFeed">
+        <button class="nav-routes-right-item" @click="router.push('/archive')">
+          <Icon name="material-symbols:archive" />
+        </button>
+        <button class="nav-routes-right-item" @click="openRssFeed">
           <Icon name="material-symbols:rss-feed" />
-        </div>
+        </button>
       </div>
     </div>
   </nav>
@@ -84,6 +110,22 @@ const openRssFeed = () => {
       }
     }
 
+    &-center {
+      display: flex; // 使用 Flexbox
+      justify-content: center; // 水平居中
+      align-items: center; // 垂直居中
+
+      .totop {
+        transition: all .15s ease-in-out;
+
+        svg,
+        span {
+          width: 1.75rem;
+          height: 1.75rem;
+        }
+      }
+    }
+
     &-right {
       display: flex; // 使用 Flexbox
       justify-content: center; // 水平居中
@@ -100,7 +142,8 @@ const openRssFeed = () => {
         margin: 0 .75rem;
         color: rgba(0, 0, 0, .75);
 
-        svg, span{
+        svg,
+        span {
           width: 90%;
           height: 90%;
           transition: all .15s ease-in-out;
@@ -108,7 +151,9 @@ const openRssFeed = () => {
       }
 
       &-item:hover {
-        svg, span{
+
+        svg,
+        span {
           width: 100%;
           height: 100%;
           color: rgba(0, 0, 0, 1);
@@ -116,5 +161,10 @@ const openRssFeed = () => {
       }
     }
   }
+}
+
+.displaynone {
+  opacity: 0;
+  cursor: none;
 }
 </style>
