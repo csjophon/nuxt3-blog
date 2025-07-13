@@ -3,7 +3,7 @@ import RSS from 'rss';
 import { serverQueryContent } from '#content/server'
 import { MarkdownNode, MarkdownRoot } from '@nuxt/content';
 
-const SITE_URL = 'http://rwilds.top'
+const SITE_URL = 'http://jophon.cn'
 
 // @ts-ignore
 export default defineEventHandler(async (event) => {

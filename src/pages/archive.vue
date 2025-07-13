@@ -81,7 +81,9 @@ onMounted(() => {
 .archive {
 
   padding-top: 5rem;
-  width: 100%;
+  max-width: 800px;
+  min-width: 375px;
+  margin: 0 auto;
 
   .title {
     font-size: 2.5rem;
@@ -134,7 +136,7 @@ onMounted(() => {
       line-height: 2rem;
       min-width: 4rem;
       font-size: .75rem;
-    } 
+    }
   }
 }
 </style>

@@ -493,3 +493,13 @@
 .prose-sm > :last-child {
   margin-bottom: 0;
 }
+
+
+.prose-content h1,
+.prose-content h2,
+.prose-content h3,
+.prose-content h4,
+.prose-content h5,
+.prose-content h6 {
+  scroll-margin-top: 5rem; // 根据你的 header 高度调整
+}

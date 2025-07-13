@@ -46,9 +46,9 @@ const openRssFeed = () => {
 <template>
   <nav class="nav">
     <div class="nav-routes">
-      <div class="nav-routes-left">
+      <div class="nav-routes-left" @click="router.push('/')">
         <img class="nav-routes-left-avatar" src="/avatar.jpeg" alt="">
-        <div class="nav-routes-left-item" @click="router.push('/')">
+        <div class="nav-routes-left-item">
           Jophon
         </div>
       </div>
@@ -90,6 +90,7 @@ const openRssFeed = () => {
       justify-content: center; // 水平居中
       align-items: center; // 垂直居中
       margin-right: auto; // 左侧导航项靠左对齐
+      cursor: pointer;
 
       &-avatar {
         border-radius: var(--shape-border-radius-circle);
@@ -103,7 +104,6 @@ const openRssFeed = () => {
         display: flex; // 使用 Flexbox
         justify-content: center; // 水平居中
         align-items: center; // 垂直居中
-        cursor: pointer;
         font-size: 1.5rem;
         color: rgba(0, 0, 0, .75);
 

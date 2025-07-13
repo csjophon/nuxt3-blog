@@ -29,15 +29,8 @@
     flex-direction: column;
 
     .main {
-        max-width: 1080px;
-        min-width: 375px;
-        width: 100%;
-        box-sizing: content-box;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        padding: 0 2rem 2rem;
         flex: 1;
+        padding: 0 2rem;
     }
 
     .footer {

@@ -2,9 +2,11 @@
 
 import links from '@/assets/links'
 
-const content = useContent()
+const content= useContent()
 
-// console.log(content)
+console.log(content)
+
+const { toc } = useContent()
 
 const router = useRouter();
 
@@ -43,17 +45,10 @@ const openInNewTab = (link: string) => {
       </div>
     </ContentDoc>
 
-    <div class="back">
-      <Icon name="material-symbols:arrow-forward-ios-rounded"></Icon>
-      &nbsp;
-      <button @click="back">
-        cd&nbsp;&nbsp;..
-      </button>
-    </div>
     <div class="toc">
-      <UIcon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
-      <ul class="toc-main" v-if="content.toc.value && content.toc.value.links">
-        <li v-for="link in content.toc.value.links" :key="link.text">
+      <Icon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
+      <ul class="toc-main" v-if="toc && toc.links">
+        <li v-for="link in toc.links" :key="link.text">
           <a :href="`#${link.id}`">
             {{ link.text }}
           </a>
@@ -61,16 +56,28 @@ const openInNewTab = (link: string) => {
       </ul>
     </div>
 
+    <div class="back">
+      <Icon name="material-symbols:arrow-forward-ios-rounded"></Icon>
+      &nbsp;
+      <button @click="back">
+        cd&nbsp;&nbsp;..
+      </button>
+    </div>
+
+
+
   </div>
 </template>
 
 <style lang="scss">
 .blog {
-
   .prose {
     flex: 1;
     flex-grow: 1;
-    max-width: calc(100%);
+    max-width: 800px;
+    min-width: 375px;
+    margin: 0 auto;
+
 
     &-header {
       padding: 1.5rem 2rem;
@@ -83,10 +90,6 @@ const openInNewTab = (link: string) => {
     &-info {
       display: flex;
       gap: 1rem;
-
-      &-subtitle {}
-
-      &-date {}
     }
 
     &-desc {
@@ -100,8 +103,9 @@ const openInNewTab = (link: string) => {
   }
 
   .back {
+    width: 100%;
     padding: 1.5rem 2rem;
-    
+
     svg,
     span {
       width: .75rem;
@@ -127,12 +131,14 @@ const openInNewTab = (link: string) => {
     position: fixed;
     z-index: 1000;
     top: 8rem;
-    left: 12rem;
-    width: 10rem;
+    left: 1rem;
     color: var(--font-color);
+    opacity: 1;
 
     ul {
       padding: 0 1rem 1rem;
+      opacity: 0;
+      transition: all .25s ease-in-out;
     }
 
     li {
@@ -151,16 +157,42 @@ const openInNewTab = (link: string) => {
     }
   }
 
+  @media (max-width: 1280px) {
+    .toc {
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 1281px) and (max-width: 1440px) {
+    .toc {
+      width: 16rem;
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    .toc {
+      width: 20rem;
+      opacity: 1;
+    }
+  }
+
   .toc:hover .toc-icon {
     opacity: 1;
   }
 
+  .toc:hover {
+    .toc-main {
+      opacity: 1;
+    }
+  }
+
   .toc-main>li:hover {
+    color: black;
     opacity: 1;
     font-weight: inherit;
     text-decoration: underline;
     text-underline-offset: .3rem;
-    transition: border 0.3s ease-in-out;
   }
 }
 </style>

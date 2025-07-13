@@ -87,7 +87,13 @@ export default defineNuxtConfig({
 
   content: {
     documentDriven: true,
-    markdown: {},
+    markdown: {
+      anchorLinks: true,
+      toc: {
+        searchDepth: 3,
+        depth: 3,
+      }
+    },
     highlight: {
       langs: [
         'javascript',

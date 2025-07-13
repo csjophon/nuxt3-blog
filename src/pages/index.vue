@@ -12,7 +12,6 @@ useSeoMeta({
 
 <template>
   <div class="home">
-    
     <div class="home-main">
       <div class="articles">
         <div class="articles-main">
@@ -26,5 +25,8 @@ useSeoMeta({
 <style lang="scss" scoped>
 .home {
   padding-top: 8rem;
+  max-width: 800px;
+  min-width: 375px;
+  margin: 0 auto;
 }
 </style>
