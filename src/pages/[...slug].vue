@@ -2,7 +2,7 @@
 
 import links from '@/assets/links'
 
-const content= useContent()
+const content = useContent()
 
 console.log(content)
 
@@ -11,7 +11,15 @@ const { toc } = useContent()
 const router = useRouter();
 
 const back = () => {
-  router.back()
+  router.back();
+}
+
+const scrollToAnchor = (id: string) => {
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+  // 不改变 hash，不计入 history
 }
 
 onMounted(async () => {
@@ -42,6 +50,13 @@ const openInNewTab = (link: string) => {
         </div>
         <p class="prose-desc">{{ doc.desc }}</p>
         <ContentRenderer class="prose-content" :value="doc" />
+        <div class="back">
+          <Icon name="material-symbols:arrow-forward-ios-rounded"></Icon>
+          &nbsp;
+          <button @click="back">
+            cd&nbsp;&nbsp;..
+          </button>
+        </div>
       </div>
     </ContentDoc>
 
@@ -49,23 +64,12 @@ const openInNewTab = (link: string) => {
       <Icon class="toc-icon" name="i-heroicons-solid-menu-alt-2" dynamic />
       <ul class="toc-main" v-if="toc && toc.links">
         <li v-for="link in toc.links" :key="link.text">
-          <a :href="`#${link.id}`">
+          <a :href="`#${link.id}`" @click.prevent="scrollToAnchor(link.id)">
             {{ link.text }}
           </a>
         </li>
       </ul>
     </div>
-
-    <div class="back">
-      <Icon name="material-symbols:arrow-forward-ios-rounded"></Icon>
-      &nbsp;
-      <button @click="back">
-        cd&nbsp;&nbsp;..
-      </button>
-    </div>
-
-
-
   </div>
 </template>
 
@@ -123,7 +127,7 @@ const openInNewTab = (link: string) => {
 
     button:hover {
       color: var(--color-natural-Ink70);
-      border-bottom: 1px solid var(--color-natural-Ink70);
+      border-bottom: 1px solid var(--color-natural-Ink50);
     }
   }
 
