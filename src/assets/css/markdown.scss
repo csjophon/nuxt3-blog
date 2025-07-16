@@ -29,13 +29,9 @@
 .prose a {
   font-weight: 500;
   text-decoration: none;
-  border-bottom: 1px dashed var(--color-natural-Ink50);
-  transition: all .2s ease-in-out;
-}
-
-.prose a:hover {
-  text-decoration: none;
-  border-bottom: 1px dashed var(--color-natural-Ink90);
+  border-bottom: 0;
+  pointer-events: none;
+  cursor: default;
 }
 
 .prose a code {

@@ -97,6 +97,7 @@ const openInNewTab = (link: string) => {
     }
 
     &-desc {
+      margin: 1rem 1.5rem;
       padding: 1rem 1.5rem;
       background-color: var(--prose-desc-background);
     }

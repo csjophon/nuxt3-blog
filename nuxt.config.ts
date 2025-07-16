@@ -103,7 +103,9 @@ export default defineNuxtConfig({
         'html',
         'yaml',
         'yml',
-        'xml'
+        'xml',
+        'md',
+        'css'
         //....
       ],
       theme: {
