@@ -15,7 +15,7 @@
 //   width: 100%;
 // }
 
-.prose p > img {
+.prose p>img {
   width: 100%;
   --uno: shadow rounded-lg;
   transform: scale(1.05);
@@ -29,9 +29,24 @@
 .prose a {
   font-weight: 500;
   text-decoration: none;
-  border-bottom: 0;
-  pointer-events: none;
-  cursor: default;
+  border-bottom: 1px dashed var(--color-natural-Ink50);
+  transition: all .2s ease-in-out;
+}
+
+.prose a:hover {
+  color: var(--article-title-undeline-color-hover);
+  border-bottom: 1px dashed var(--article-title-undeline-color-hover);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  border-bottom: none !important;
+  pointer-events: none !important;
+  cursor: default !important;
 }
 
 .prose a code {
@@ -98,15 +113,15 @@ h6:focus .header-anchor {
   padding: 0.5em 1em;
 }
 
-.prose blockquote > * {
+.prose blockquote>* {
   opacity: 0.7;
 }
 
-.prose blockquote > :first-child {
+.prose blockquote> :first-child {
   margin-top: 0;
 }
 
-.prose blockquote > :last-child {
+.prose blockquote> :last-child {
   margin-bottom: 0;
 }
 
@@ -130,41 +145,40 @@ h6:focus .header-anchor {
 }
 
 .table-of-contents-anchor {
-  --uno: mx2 w-7 h-7 text-lg flex items-center justify-center bg-base rounded text-hex-8887 border border-base shadow md:
-    border-transparent md: shadow-none transition duration-400;
+  --uno: mx2 w-7 h-7 text-lg flex items-center justify-center bg-base rounded text-hex-8887 border border-base shadow md: border-transparent md: shadow-none transition duration-400;
 }
 
-.table-of-contents > ul {
+.table-of-contents>ul {
   text-overflow: ellipsis;
   height: 100%;
   overflow-y: auto;
   --uno: rounded op0 mt-1 pb-5 transition duration-700;
 }
 
-*:hover > .table-of-contents > .table-of-contents-anchor,
-.toc-always-on .table-of-contents > .table-of-contents-anchor {
+*:hover>.table-of-contents>.table-of-contents-anchor,
+.toc-always-on .table-of-contents>.table-of-contents-anchor {
   --uno: text-inherit;
 }
 
-.toc-always-on .table-of-contents > ul {
+.toc-always-on .table-of-contents>ul {
   opacity: 0.6;
 }
 
-*:hover > .table-of-contents > ul {
+*:hover>.table-of-contents>ul {
   opacity: 0.75;
 }
 
-.table-of-contents ul > li::before {
+.table-of-contents ul>li::before {
   display: none;
 }
 
-.table-of-contents ul > li {
+.table-of-contents ul>li {
   padding-left: 0.8rem;
   line-height: 1.5em;
   margin-top: 0.5em;
 }
 
-.table-of-contents ul > li > a {
+.table-of-contents ul>li>a {
   --uno: op75 hover: op100 transition;
 }
 

@@ -70,6 +70,7 @@ const openInNewTab = (link: string) => {
         </li>
       </ul>
     </div>
+
   </div>
 </template>
 
@@ -136,7 +137,6 @@ const openInNewTab = (link: string) => {
     position: fixed;
     z-index: 1000;
     top: 8rem;
-    left: 1rem;
     color: var(--font-color);
     opacity: 1;
 

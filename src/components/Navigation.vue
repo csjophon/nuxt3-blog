@@ -106,8 +106,17 @@ const openRssFeed = () => {
         align-items: center; // 垂直居中
         font-size: 1.5rem;
         color: rgba(0, 0, 0, .75);
-
+        transition: all .15s ease-in-out;
       }
+    }
+
+    &-left:hover &-left-item {
+      color: rgba(0, 0, 0, 1);
+      transform: scale(1.05);
+    }
+
+    &-left:hover &-left-avatar {
+      animation: avatar-rotate 3s linear infinite; // 无限顺时针旋转
     }
 
     &-center {
@@ -144,8 +153,8 @@ const openRssFeed = () => {
 
         svg,
         span {
-          width: 90%;
-          height: 90%;
+          width: 100%;
+          height: 100%;
           transition: all .15s ease-in-out;
         }
       }
@@ -154,12 +163,17 @@ const openRssFeed = () => {
 
         svg,
         span {
-          width: 100%;
-          height: 100%;
+          transform: translateY(-0.25rem);
           color: rgba(0, 0, 0, 1);
         }
       }
     }
+  }
+}
+
+@keyframes avatar-rotate {
+  100% {
+    transform: rotate(360deg);
   }
 }
 
